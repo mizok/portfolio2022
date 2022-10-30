@@ -1,0 +1,15 @@
+<div class="layout" [class.layout--active]="active">
+    <div class="layout__inner">
+        <div class="layout__main">
+            <ng-content #main></ng-content>
+        </div>
+        <button class="layout__toggler hamburger" [class.hamburger--active]="active" (click)="toggle()">
+            <div class="hamburger__inner">
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
+            </div>
+        </button>
+        <app-side-menu class="layout__side"></app-side-menu>
+    </div>
+</div>
