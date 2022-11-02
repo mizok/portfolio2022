@@ -29,6 +29,11 @@ $sideWidth: 300px;
 
     &__main {
         width: 100%;
+
+        &::ng-deep>* {
+            display: block;
+            height: 100%;
+        }
     }
 
     &__toggler {
