@@ -1,0 +1,155 @@
+@import 'util';
+
+:host {
+    display: block;
+}
+
+.about {
+    &__head+&__body {
+        margin-top: 75px;
+    }
+
+    &__body>&__former+&__latter {
+        margin-top: 50px;
+    }
+
+    &__latter {
+        display: flex;
+    }
+
+    &__latter>* {
+        flex: 1;
+        text-align: left;
+    }
+
+    &__latter>*+* {
+        margin-left: 30px;
+        flex: 1.5
+    }
+}
+
+.about-intro {
+    display: flex;
+    align-items: center;
+
+    &__head {
+        width: 150px;
+        flex: none;
+    }
+
+    &__head &__img {
+        width: 100%;
+    }
+
+    &__img {
+        img {
+            width: 100%;
+        }
+    }
+
+    &__head+&__body {
+        margin-left: 50px;
+    }
+
+    &__body {
+        flex: 1;
+        text-align: left;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    &__title+&__content {
+        margin-top: 10px;
+    }
+
+    &__content {
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+}
+
+.about-contact-data {
+    &__ul>&__li+&__li {
+        margin-top: 44px;
+    }
+}
+
+
+.about-contact-data-item {
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    &__title+&__content {
+        margin-top: 10px;
+    }
+
+    &__content {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}
+
+.about-skill {
+    &__ul>&__li+&__li {
+        margin-top: 40px;
+    }
+}
+
+.about-skill-item {
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    &__title+&__percentage {
+        margin-top: 10px;
+    }
+}
+
+.skill-percentage {
+    background-color: $gray;
+    height: 5px;
+
+    &__inner {
+        background-color: $black;
+        position: relative;
+        height: 100%;
+    }
+
+    &__inner &__percent {
+        position: absolute;
+        right: 0;
+        top: -10px;
+        transform: translateY(-100%);
+    }
+
+    &__percent {
+        background-color: $black;
+        border-radius: 5px;
+        color: $white;
+        font-size: 0.75rem;
+        padding: 5px;
+
+        &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 5px 0 5px;
+            border-color: $black transparent transparent transparent;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            transform: translateY(95%)
+        }
+    }
+
+}
