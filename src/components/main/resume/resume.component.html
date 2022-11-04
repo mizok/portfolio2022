@@ -1,0 +1,28 @@
+<div class="resume section">
+    <div class="section__inner">
+        <div class="resume__head">
+            <div class="section__name">resume</div>
+            <h1 class="section__title">More of My Credentials.</h1>
+        </div>
+        <div class="resume__body">
+            <div class="resume__tree resume-tree" *ngFor="let tree of trees">
+                <div class="resume-tree__title">
+                    {{tree.title}}
+                </div>
+                <div class="resume-tree__trunk">
+                    <div class="resume-tree__unit" *ngFor="let unit of tree.units">
+                        <div class="resume-tree__former">
+                            <div class="resume-tree__position-title">{{unit.positionTitle}}</div>
+                            <div class="resume-tree__position-descrp">{{unit.positionDescrp}}</div>
+                        </div>
+                        <div class="resume-tree__middle"></div>
+                        <div class="resume-tree__latter">
+                            <div class="resume-tree__unit-title">{{unit.unitTitle}}</div>
+                            <div class="resume-tree__unit-descrp">{{unit.unitDescrp}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

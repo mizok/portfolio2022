@@ -1,0 +1,45 @@
+.section {
+    text-align: center;
+    padding-top: 120px;
+
+    @include rwd($screen-pad-portrait) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    &__inner {
+        max-width: 750px;
+        width: 100%;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    &__name {
+        font-size: 1rem;
+        font-weight: 400;
+        color: $gray;
+    }
+
+    &__name+&__title {
+        margin-top: 10px;
+    }
+
+    &__title {
+        font-size: 2rem;
+        padding-bottom: 20px;
+        position: relative;
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            margin: 0 auto;
+            background-color: $gray;
+        }
+    }
+}
