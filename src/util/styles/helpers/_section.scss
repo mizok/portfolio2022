@@ -1,11 +1,28 @@
 .section {
     text-align: center;
-    padding-top: 120px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
 
     @include rwd($screen-pad-portrait) {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
+
+    &--gray {
+        background-color: transparentize($dark-gray, 0.95);
+    }
+
+    &--heading {
+        padding-top: 120px;
+
+        @include rwd($screen-pad-portrait) {
+            padding-top: 100px;
+        }
+    }
+
+
 
     &__inner {
         max-width: 750px;
@@ -14,10 +31,14 @@
         margin: 0 auto;
     }
 
+    &--wide &__inner {
+        max-width: $screen-bs-large;
+    }
+
     &__name {
         font-size: 1rem;
         font-weight: 400;
-        color: $gray;
+        color: $dark-gray;
     }
 
     &__name+&__title {
@@ -39,7 +60,7 @@
             height: 2px;
             bottom: 0;
             margin: 0 auto;
-            background-color: $gray;
+            background-color: $dark-gray;
         }
     }
 }

@@ -1,4 +1,4 @@
-<div class="resume section">
+<div class="resume section section--gray">
     <div class="section__inner">
         <div class="resume__head">
             <div class="section__name">resume</div>
@@ -15,7 +15,11 @@
                             <div class="resume-tree__position-title">{{unit.positionTitle}}</div>
                             <div class="resume-tree__position-descrp">{{unit.positionDescrp}}</div>
                         </div>
-                        <div class="resume-tree__middle"></div>
+                        <div class="resume-tree__middle">
+                            <div class="resume-tree__icon">
+                                <img [attr.src]="tree.img" alt="middle-image">
+                            </div>
+                        </div>
                         <div class="resume-tree__latter">
                             <div class="resume-tree__unit-title">{{unit.unitTitle}}</div>
                             <div class="resume-tree__unit-descrp">{{unit.unitDescrp}}</div>

@@ -1,0 +1,66 @@
+@import 'util';
+
+.personality {
+    &__head+&__body {
+        margin-top: 50px;
+    }
+}
+
+.personality-group {
+    $gap: 20px;
+    @include fixed-gutter-flex-grid($column-gutter: $gap, $column-number: 4, $min-screen-width: $screen-bs-large+1);
+    @include fixed-gutter-flex-grid($column-gutter: $gap/2, $column-number: 2, $min-screen-width: $screen-normal-phone-portrait+1, $max-screen-width: $screen-bs-large);
+    @include fixed-gutter-flex-grid($column-gutter: $gap/2, $column-number: 1, $max-screen-width: $screen-normal-phone-portrait);
+}
+
+.personality-card {
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid $dark-gray;
+
+    @include rwd($screen-bs-large) {
+        padding: 15px;
+    }
+
+    &__img {
+        height: 50px;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    &__img+&__title {
+        margin-top: 20px;
+
+        @include rwd($screen-bs-large) {
+            margin-top: 10px;
+        }
+    }
+
+    &__title {
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    &__title+&__content {
+        margin-top: 20px;
+
+        @include rwd($screen-bs-large) {
+            margin-top: 10px;
+        }
+    }
+
+    &__content {
+        font-size: 1rem;
+        line-height: 1.5;
+
+        p {
+            font-size: 3rem;
+        }
+    }
+}

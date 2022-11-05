@@ -525,3 +525,28 @@
         @content
     }
 }
+
+@mixin mask($direction: 'left', $length: 100%) {
+    @if($direction =='right') {
+        $deg: -90deg;
+        mask-image: linear-gradient(#{$deg}, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) #{$length});
+    }
+
+    @else if($direction =='left') {
+        $deg: 90deg;
+        mask-image: linear-gradient(#{$deg}, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) #{$length});
+    }
+
+    @else if($direction =='top') {
+        $deg: 0deg;
+        mask-image: linear-gradient(#{$deg}, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) #{$length});
+    }
+
+    @if($direction =='down') {
+        $deg: 180deg;
+        mask-image: linear-gradient(#{$deg}, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) #{$length});
+    }
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}

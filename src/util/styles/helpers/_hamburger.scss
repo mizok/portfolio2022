@@ -6,6 +6,11 @@
     border: none;
     cursor: pointer;
 
+    @include rwd($screen-pad-portrait) {
+        background-color: $black;
+        transform: scale(0.6)
+    }
+
     &__inner {
         padding: 10px;
         display: flex;
@@ -23,6 +28,10 @@
         height: 4px;
         background-color: $black;
         border-radius: 4px;
+
+        @include rwd($screen-pad-portrait) {
+            background-color: $white;
+        }
     }
 
     &__line+&__line {

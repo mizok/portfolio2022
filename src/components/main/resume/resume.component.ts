@@ -11,9 +11,10 @@ interface unitData {
   styleUrls: ['./resume.component.scss']
 })
 export class ResumeComponent implements OnInit {
-  trees: { title: string, units: unitData[] }[] = [
+  trees: { title: string, img: string, units: unitData[] }[] = [
     {
       title: 'Education',
+      img: 'assets/images/school.svg',
       units: [
         {
           positionTitle: '大學',
@@ -30,6 +31,7 @@ export class ResumeComponent implements OnInit {
       ]
     }, {
       title: 'Work Experience',
+      img: 'assets/images/work.svg',
       units: [
         {
           positionTitle: '前端設計(實習)',
