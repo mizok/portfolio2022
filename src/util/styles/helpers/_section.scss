@@ -31,8 +31,16 @@
         margin: 0 auto;
     }
 
-    &--wide &__inner {
+    &__inner+&__inner {
+        margin-top: 50px;
+    }
+
+    &__inner--wide {
         max-width: $screen-bs-large;
+    }
+
+    &__inner--unlimited {
+        max-width: none;
     }
 
     &__name {
@@ -62,5 +70,15 @@
             margin: 0 auto;
             background-color: $dark-gray;
         }
+    }
+
+    &__title+&__descrp {
+        margin-top: 20px;
+    }
+
+    &__descrp {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $dark-gray;
     }
 }

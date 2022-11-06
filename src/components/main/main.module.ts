@@ -8,6 +8,7 @@ import { ResumeComponent } from './resume/resume.component';
 import { PorfolioComponent } from './porfolio/porfolio.component';
 import { PersonalityComponent } from './personality/personality.component';
 import { ContactComponent } from './contact/contact.component';
+import { ContributeComponent } from './contribute/contribute.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ContactComponent } from './contact/contact.component';
     PorfolioComponent,
     PersonalityComponent,
     ContactComponent,
+    ContributeComponent,
   ],
   imports: [
     CommonModule,

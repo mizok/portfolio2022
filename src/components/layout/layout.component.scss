@@ -12,6 +12,7 @@ $sideWidth: 300px;
     left: 0;
     top: 0;
     overflow: hidden;
+    user-select: none;
 
     &__inner {
         display: flex;
@@ -45,6 +46,13 @@ $sideWidth: 300px;
                 height: 100%;
             }
         }
+    }
+
+    &__overflow-wrapper {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     &__toggler {

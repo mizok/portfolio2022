@@ -4,8 +4,10 @@
         <div class="layout__content">
 
             <div class="layout__main">
-                <ng-content #main></ng-content>
-                <app-footer></app-footer>
+                <div class="layout__overflow-wrapper">
+                    <ng-content #main></ng-content>
+                    <app-footer></app-footer>
+                </div>
             </div>
 
         </div>

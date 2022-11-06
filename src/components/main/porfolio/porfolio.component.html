@@ -1,14 +1,78 @@
-<div class="porfolio section">
-    <div class="section__inner">
+<div class="porfolio section ">
+    <div class="section__inner section__inner--wide">
         <div class="porfolio__head">
             <div class="section__name">porfolio</div>
             <h1 class="section__title">Here are Some of My Works.</h1>
+            <div class="section__descrp">
+                As a FE with art related education, I love to create Web 3D Experiance/ Generative Art releated
+                works.<br>
+                The techniques I use are quite diverse, including Three.js/P5.js/Webgl/blender/after
+                effects,...etc.<br>
+                At present, I treat the technology in this field as a hobby, whcih means I have no plan to use these
+                techniques in jobs.
+            </div>
         </div>
         <div class="porfolio__body">
-            <div class="porfolio-grid">
-                <div class="porfolio-grid__cell">
-                    <img src="" alt="">
+            <div class="porfolio-grid" #grid>
+                <div class="porfolio-grid__cell porfolio-grid-cell" *ngFor="let folio of folios">
+                    <div class="porfolio-grid-cell__guide">
+                        <div class="porfolio-grid-cell__title">{{folio.title}}</div>
+                        <a [attr.href]="folio.repoLink" class="porfolio-grid-cell__link"></a>
+                        <a [attr.href]="folio.pageLink" class="porfolio-grid-cell__link"></a>
+                    </div>
+                    <div class="porfolio-grid-cell__img">
+                        <img draggable="false" [attr.src]="folio.img" alt="porfolio image">
+                    </div>
                 </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="section__inner section__inner--wide">
+        <div class="porfolio__head">
+            <div class="section__descrp">
+                Here are also some projects which I participated during recent jobs.<br>But I have no
+                right to show you the source code, just take a look if you are interested.
+            </div>
+        </div>
+        <div class="porfolio__body porfolio__body--pad">
+            <div class="porfolio-timeline">
+                <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
+                    #timelineItem>
+                    <ng-container [ngTemplateOutlet]="i%2===0?even:odd" [ngTemplateOutletContext]="{data:timelineData}">
+                    </ng-container>
+                </div>
+                <ng-template #even let-data="data">
+                    <div
+                        class="porfolio-timeline__square porfolio-timeline__square--up porfolio-timeline__square--blank">
+                    </div>
+                    <div class="porfolio-timeline__circle">
+                        <p>{{data.time}}</p>
+                    </div>
+                    <div class="porfolio-timeline__square porfolio-timeline__square--down">
+                        <img draggable="false" [attr.src]="data.img" alt="logo" draggable="false">
+                        <h3>{{data.title}}</h3>
+                        <a class="porfolio-timeline__link" [attr.href]="data.url">
+                            <img draggable="false" src="assets/images/link.svg" alt="link">
+                        </a>
+                    </div>
+                </ng-template>
+                <ng-template #odd let-data="data">
+                    <div class="porfolio-timeline__square porfolio-timeline__square--up">
+                        <img draggable="false" [attr.src]="data.img" alt="logo">
+                        <h3>{{data.title}}</h3>
+                        <a class="porfolio-timeline__link" [attr.href]="data.url">
+                            <img draggable="false" src="assets/images/link.svg" alt="link">
+                        </a>
+                    </div>
+                    <div class="porfolio-timeline__circle">
+                        <p>{{data.time}}</p>
+                    </div>
+                    <div
+                        class="porfolio-timeline__square porfolio-timeline__square--down porfolio-timeline__square--blank">
+                    </div>
+                </ng-template>
+                <div id="end"></div>
             </div>
         </div>
     </div>

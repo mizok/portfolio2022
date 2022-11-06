@@ -1,0 +1,152 @@
+@import 'util';
+
+.porfolio {
+
+    &__head+&__body {
+        margin-top: 50px;
+    }
+
+    &__body--pad {
+        padding-top: 50px;
+    }
+}
+
+.porfolio-grid {
+
+    &__cell {
+        font-size: 0;
+        width: calc((100% - 10px)/2);
+        margin-bottom: 10px;
+
+        @include rwd($screen-normal-phone-portrait) {
+            width: 100%;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.porfolio-timeline {
+
+    $strokeWidth: 3px;
+    display: inline-flex;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &:after {
+            content: '';
+            z-index: 0;
+            display: block;
+            background-color: $dark-gray;
+            padding: 0;
+            width: auto;
+            height: $strokeWidth;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    &__circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        background-color: $dark-gray;
+        margin: 20px 0;
+        padding: 2px;
+        margin-left: -5px;
+        z-index: 2;
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    &__circle:hover {
+        cursor: pointer;
+    }
+
+    &__circle p {
+        text-align: center;
+        margin: auto;
+        font-size: 1rem;
+        color: $white;
+    }
+
+
+    &__square {
+        border-radius: 10px;
+        z-index: 2;
+        position: relative;
+        text-align: left;
+        color: $dark-gray;
+        padding: 20px;
+        margin-left: -10px;
+        margin-right: 40px;
+        width: 225px;
+        flex: none;
+        color: $dark-gray;
+        box-shadow:
+            4.5px 4.5px 3.6px rgba(0, 0, 0, 0.024),
+            12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+            30.1px 30.1px 24.1px rgba(0, 0, 0, 0.046),
+            100px 100px 80px rgba(0, 0, 0, 0.07);
+
+
+        p {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+    }
+
+    &__square--blank {
+        visibility: hidden;
+    }
+
+    &__square h3 {
+        text-align: left;
+        font-size: 0.75rem;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+
+    &__square img {
+        height: 18px;
+        opacity: 0.75;
+    }
+
+    &__square>&__link {
+        width: 30px;
+        height: 30px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+
+        img {
+            width: 100%;
+            transform-origin: 50% 50%;
+            transform: scale(1.5);
+            pointer-events: none;
+        }
+    }
+
+}

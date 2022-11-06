@@ -153,11 +153,11 @@
 }
 
 .skill-percentage {
-    background-color: $dark-gray;
+    background-color: $gray;
     height: 5px;
 
     &__inner {
-        background-color: $black;
+        background-color: $dark-gray;
         position: relative;
         height: 100%;
     }
