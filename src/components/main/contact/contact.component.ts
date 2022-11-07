@@ -47,10 +47,10 @@ export class ContactComponent implements OnInit {
     const action = form.action;
     e.preventDefault();
     const data = new FormData(form);
-    // this.targetForm.invalid
+    // 
     fromFetch(action,
       {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
