@@ -39,6 +39,9 @@ export class ContactComponent implements OnInit {
         '',
         Validators.required
       ],
+      message: [
+        ''
+      ]
     });
   }
 
