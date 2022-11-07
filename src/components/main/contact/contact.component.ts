@@ -50,7 +50,7 @@ export class ContactComponent implements OnInit {
     // this.targetForm.invalid
     fromFetch(action,
       {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         },
