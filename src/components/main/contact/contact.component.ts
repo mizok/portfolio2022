@@ -55,7 +55,12 @@ export class ContactComponent implements OnInit {
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          name: data.get('name'),
+          email: data.get('email'),
+          subject: data.get('subject'),
+          message: data.get('message')
+        })
       }
     ).subscribe({
       complete: () => console.log('done')
