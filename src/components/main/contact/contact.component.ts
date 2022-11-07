@@ -39,9 +39,6 @@ export class ContactComponent implements OnInit {
         '',
         Validators.required
       ],
-      message: [
-        ''
-      ],
     });
   }
 
@@ -50,20 +47,13 @@ export class ContactComponent implements OnInit {
     const action = form.action;
     e.preventDefault();
     const data = new FormData(form);
-    // 
     fromFetch(action,
       {
-        redirect: "follow",
         method: 'POST',
         headers: {
-          'Content-Type': 'text/plain;charset=utf-8'
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          name: data.get('name'),
-          email: data.get('email'),
-          subject: data.get('subject'),
-          message: data.get('message')
-        })
+        body: data,
       }
     ).subscribe({
       complete: () => console.log('done')
