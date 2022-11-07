@@ -49,14 +49,17 @@ export class ContactComponent implements OnInit {
     const form = (e.target as HTMLFormElement);
     const action = form.action;
     e.preventDefault();
-    const data = new FormData(form);
+    const formData = new FormData(form);
+    const object: { [key: string]: any } = {};
+    formData.forEach((value, key) => object[key] = value);
+    const jsonStr = JSON.stringify(object);
     fromFetch(action,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: data,
+        body: jsonStr,
       }
     ).subscribe({
       complete: () => console.log('done')
