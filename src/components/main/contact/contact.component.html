@@ -5,24 +5,42 @@
             <h1 class="section__title">I'd Love To Hear From You.</h1>
         </div>
         <div class="contact__body">
-            <form action="" class="contact-form">
+            <form id="form" [formGroup]="targetForm" (submit)="submit($event)"
+                action="https://script.google.com/macros/s/AKfycbwQFu4KEVBZflaqu1YQKuzCSyZ1PNaW9Di-dt9jdzyRdUp8UWZIY-Ru1c8tlgdY2b5ucA/exec"
+                class="contact-form">
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control">
+                        <input type="text" class="input-block__form-control" formControlName="name">
                         <label for="">您的姓名</label>
                     </div>
+                    <small class="contact-form__error" *ngIf="
+                              !form['name'].pristine&&
+                              form['name'].hasError('required')
+                            ">請填寫姓名</small>
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control">
+                        <input type="text" class="input-block__form-control" formControlName="email">
                         <label for="">Email</label>
                     </div>
+                    <small class="contact-form__error" *ngIf="
+                    !form['email'].pristine&&
+                    form['email'].hasError('required')
+                            ">請填寫Email</small>
+                    <small class="contact-form__error" *ngIf="
+                    !form['email'].pristine&&
+                    form['email'].hasError('email')
+                            ">Email格式錯誤</small>
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control">
+                        <input type="text" class="input-block__form-control" formControlName="subject">
                         <label for="">主旨</label>
                     </div>
+                    <small class="contact-form__error" *ngIf="
+                    !form['subject'].pristine&&
+                    form['subject'].hasError('required')
+                            ">請填寫主旨</small>
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block input-block--textarea">

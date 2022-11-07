@@ -9,6 +9,7 @@ import { PorfolioComponent } from './porfolio/porfolio.component';
 import { PersonalityComponent } from './personality/personality.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContributeComponent } from './contribute/contribute.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { ContributeComponent } from './contribute/contribute.component';
   ],
   imports: [
     CommonModule,
-    LayoutModule
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MainComponent
