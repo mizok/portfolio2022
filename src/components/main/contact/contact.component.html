@@ -9,7 +9,7 @@
                 action="https://app.headlessforms.cloud/api/v1/form-submission/0aGyipLRAA" class="contact-form">
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control" formControlName="name">
+                        <input type="text" class="input-block__form-control" name="name" formControlName="name">
                         <label for="">您的姓名</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
@@ -19,7 +19,7 @@
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control" formControlName="email">
+                        <input type="text" class="input-block__form-control" name="email" formControlName="email">
                         <label for="">Email</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
@@ -33,7 +33,7 @@
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control" formControlName="subject">
+                        <input type="text" class="input-block__form-control" name="subject" formControlName="subject">
                         <label for="">主旨</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
@@ -43,7 +43,7 @@
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block input-block--textarea">
-                        <textarea rows="3" type="text" class="input-block__form-control"
+                        <textarea rows="3" type="text" class="input-block__form-control" name="message"
                             formControlName="message"></textarea>
                         <label for="">請輸入您的訊息</label>
                     </div>
