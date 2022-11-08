@@ -2,8 +2,23 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@services": [
+        "./src/services"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@components": [
+        "./src/components"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+    },
   },
   "files": [
     "src/main.ts",

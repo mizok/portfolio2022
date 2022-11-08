@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,20 +6,23 @@ import {
   Validators,
   AbstractControl
 } from "@angular/forms";
-import {
-  fromFetch
-} from 'rxjs/fetch';
-
+import { ContactService, ModalService } from '@services';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
+  @ViewChild('alert') alertTemplateRef!: TemplateRef<any>;
   targetForm!: FormGroup;
   fc = new FormControl();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private contactService: ContactService,
+    private modalService: ModalService,
+    private viewContainerRef: ViewContainerRef
+  ) { }
 
   ngOnInit(): void {
     this.creatForm();
@@ -46,23 +49,15 @@ export class ContactComponent implements OnInit {
   }
 
   submit(e: SubmitEvent) {
-    const form = (e.target as HTMLFormElement);
-    const action = form.action;
     e.preventDefault();
-    const formData = new FormData(form);
-    const object: { [key: string]: any } = {};
-    formData.forEach((value, key) => object[key] = value);
-    const jsonStr = JSON.stringify(object);
-    fromFetch(action,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: jsonStr,
+    const form = (e.target as HTMLFormElement);
+    if (this.targetForm.invalid) return;
+    this.contactService.doPost(form).subscribe({
+      complete: () => {
+        form.reset();
+        this.modalService.alert(this.alertTemplateRef, this.viewContainerRef);
+
       }
-    ).subscribe({
-      complete: () => console.log('done')
     });
 
   }

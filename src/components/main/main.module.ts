@@ -10,8 +10,7 @@ import { PersonalityComponent } from './personality/personality.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContributeComponent } from './contribute/contribute.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { ServiceModule } from '@services'
 @NgModule({
   declarations: [
     MainComponent,
@@ -27,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     LayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceModule
   ],
   exports: [
     MainComponent

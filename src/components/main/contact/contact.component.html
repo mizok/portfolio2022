@@ -9,8 +9,9 @@
                 action="https://app.headlessforms.cloud/api/v1/form-submission/0aGyipLRAA" class="contact-form">
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control" name="name" formControlName="name">
-                        <label for="">您的姓名</label>
+                        <input type="text" class="input-block__form-control" name="name" formControlName="name"
+                            [class.input-block__form-control--hasValue]="!!form['name'].value">
+                        <label for="">您的姓名*</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
                               !form['name'].pristine&&
@@ -19,8 +20,9 @@
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control" name="email" formControlName="email">
-                        <label for="">Email</label>
+                        <input type="text" class="input-block__form-control" name="email" formControlName="email"
+                            [class.input-block__form-control--hasValue]="!!form['email'].value">
+                        <label for="">Email*</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
                     !form['email'].pristine&&
@@ -33,8 +35,9 @@
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
-                        <input type="text" class="input-block__form-control" name="subject" formControlName="subject">
-                        <label for="">主旨</label>
+                        <input type="text" class="input-block__form-control" name="subject" formControlName="subject"
+                            [class.input-block__form-control--hasValue]="!!form['subject'].value">
+                        <label for="">主旨*</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
                     !form['subject'].pristine&&
@@ -44,14 +47,17 @@
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block input-block--textarea">
                         <textarea rows="3" type="text" class="input-block__form-control" name="message"
+                            [class.input-block__form-control--hasValue]="!!form['message'].value"
                             formControlName="message"></textarea>
                         <label for="">請輸入您的訊息</label>
                     </div>
                 </div>
-                <div class="contact-form__row">
-                    <button class="square-button">SEND</button>
-                </div>
+                <button class="contact-form__button square-button">SEND</button>
             </form>
         </div>
     </div>
 </div>
+
+<ng-template #alert>
+    alert!!!
+</ng-template>

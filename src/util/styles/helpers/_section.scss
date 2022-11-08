@@ -6,8 +6,7 @@
     padding-right: 40px;
 
     @include rwd($screen-pad-portrait) {
-        padding-top: 50px;
-        padding-bottom: 50px;
+        padding: 50px 20px;
     }
 
     &--gray {
