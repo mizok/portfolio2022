@@ -6,7 +6,9 @@ import {
   Validators,
   AbstractControl
 } from "@angular/forms";
-import { ContactService, ModalService } from '@services';
+import { ContactService, PopupService } from '@services';
+import { MessagePopupComponent } from '@components/popup';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -20,7 +22,7 @@ export class ContactComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private contactService: ContactService,
-    private modalService: ModalService,
+    private popupService: PopupService,
     private viewContainerRef: ViewContainerRef
   ) { }
 
@@ -51,15 +53,22 @@ export class ContactComponent implements OnInit {
   submit(e: SubmitEvent) {
     e.preventDefault();
     const form = (e.target as HTMLFormElement);
-    if (this.targetForm.invalid) return;
+    if (this.targetForm.invalid) {
+      const messagePopupData = {
+        message: '您送出的表單中有缺漏的部分，煩請確認補填後重新發送。'
+      }
+      this.popupService.open(MessagePopupComponent, this.viewContainerRef, { data: messagePopupData });
+      return;
+    };
     this.contactService.doPost(form).subscribe({
       complete: () => {
+        const messagePopupData = {
+          message: '感謝您的回覆，您將在五分鐘內於您的信箱中收到確認回覆通知。'
+        }
+        this.popupService.open(MessagePopupComponent, this.viewContainerRef, { data: messagePopupData })
         form.reset();
-        this.modalService.alert(this.alertTemplateRef, this.viewContainerRef);
-
       }
     });
-
   }
 
   get form(): { [key: string]: AbstractControl; } {

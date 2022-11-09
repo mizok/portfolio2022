@@ -1,4 +1,4 @@
-<div class="porfolio section ">
+<div class="porfolio section " (touchstart)="clearShow()">
     <div class="section__inner section__inner--wide">
         <div class="porfolio__head">
             <div class="section__name">porfolio</div>
@@ -14,11 +14,18 @@
         </div>
         <div class="porfolio__body">
             <div class="porfolio-grid" #grid>
-                <div class="porfolio-grid__cell porfolio-grid-cell" *ngFor="let folio of folios">
+                <div class="porfolio-grid__cell porfolio-grid-cell" *ngFor="let folio of folios; let i = index"
+                    (touchstart)="showGuide(i,$event)" [class.porfolio-grid-cell--show]="folio?.show">
                     <div class="porfolio-grid-cell__guide">
                         <div class="porfolio-grid-cell__title">{{folio.title}}</div>
-                        <a [attr.href]="folio.repoLink" class="porfolio-grid-cell__link"></a>
-                        <a [attr.href]="folio.pageLink" class="porfolio-grid-cell__link"></a>
+                        <div class="porfolio-grid-cell__links">
+                            <a [attr.href]="folio.repoLink" class="porfolio-grid-cell__link">
+                                <img src="assets/images/github.svg" alt="github">
+                            </a>
+                            <a [attr.href]="folio.pageLink" class="porfolio-grid-cell__link">
+                                <img src="assets/images/web.svg" alt="webpage">
+                            </a>
+                        </div>
                     </div>
                     <div class="porfolio-grid-cell__img">
                         <img draggable="false" [attr.src]="folio.img" alt="porfolio image">
@@ -35,8 +42,8 @@
                 right to show you the source code, just take a look if you are interested.
             </div>
         </div>
-        <div class="porfolio__body porfolio__body--pad">
-            <div class="porfolio-timeline">
+        <div class="porfolio__body porfolio__body--pad" #timelineContainer>
+            <div class="porfolio-timeline" #timeline>
                 <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
                     #timelineItem>
                     <ng-container [ngTemplateOutlet]="i%2===0?even:odd" [ngTemplateOutletContext]="{data:timelineData}">

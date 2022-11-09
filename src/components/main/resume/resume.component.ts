@@ -52,6 +52,24 @@ export class ResumeComponent implements OnInit {
           unitDescrp: '文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字'
         }
       ]
+    },
+    {
+      title: 'Competition',
+      img: 'assets/images/work.svg',
+      units: [
+        {
+          positionTitle: 'it邦幫忙鐵人賽',
+          positionDescrp: '2021',
+          unitTitle: '成為Canvas Ninja ! ~ 理解2D渲染的精髓',
+          unitDescrp: '整體規劃是要探討canvas 的2D渲染環境在實務上的各種運用, 例如如何使用canvas 創建web端2D粒子系統等多種特效模擬的探究。'
+        },
+        {
+          positionTitle: 'it邦幫忙鐵人賽',
+          positionDescrp: '2022',
+          unitTitle: 'Three.js 學習日誌',
+          unitDescrp: '記錄自己從只有2D rendering 基礎，到學會Three.js的過程日誌。'
+        }
+      ]
     }
   ];
   constructor() { }

@@ -1,6 +1,7 @@
 @import 'util';
 
 .porfolio {
+    padding-bottom: 100px;
 
     &__head+&__body {
         margin-top: 50px;
@@ -29,6 +30,69 @@
         img {
             width: 100%;
         }
+    }
+}
+
+.porfolio-grid-cell {
+    &__title {
+        font-size: 1.5rem;
+        color: $white;
+    }
+
+    &__title+&__links {
+        margin-top: 50px;
+    }
+
+    &__links {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__links>&__link+&__link {
+        margin-left: 30px;
+    }
+
+    &__links>&__link {
+        width: 40px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__guide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        background-color: transparentize($black, 0.25);
+        transition: opacity 500ms;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+    }
+
+    @include hasHover() {
+        &:hover &__guide {
+            pointer-events: auto;
+            opacity: 1;
+        }
+    }
+
+    &--show &__guide {
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+
+    &__img {
+        position: relative;
+        z-index: 1;
     }
 }
 

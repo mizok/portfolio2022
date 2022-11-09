@@ -11,9 +11,6 @@ import { LayoutModule } from './layout'
     CommonModule,
     MainModule,
     LayoutModule
-  ],
-  exports: [
-
   ]
 })
 export class ComponentsModule { }

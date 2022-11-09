@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, HostListener } from '@angular/core';
 import * as Masonry from 'masonry-layout';
 import * as imagesloaded from 'imagesloaded';
+import { gsap } from 'gsap';
+import { debounceTime, fromEvent } from 'rxjs'
 
 @Component({
   selector: 'app-porfolio',
@@ -9,8 +11,10 @@ import * as imagesloaded from 'imagesloaded';
 })
 export class PorfolioComponent implements OnInit, AfterViewInit {
   @ViewChild('grid') gridEle!: ElementRef;
+  @ViewChild('timeline') timeline!: ElementRef;
+  @ViewChild('timelineContainer') timelineContainer!: ElementRef;
   @ViewChildren('timelineItem') timelineItems!: QueryList<ElementRef>;
-  folios: { title: string, img: string, repoLink: string, pageLink: string }[] = [
+  folios: { title: string, img: string, repoLink: string, pageLink: string, show?: boolean }[] = [
     {
       title: '3D-Cube-Chat',
       img: 'assets/images/folio-1.png',
@@ -24,13 +28,13 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
       pageLink: ''
     },
     {
-      title: 'Universe',
+      title: 'Tower',
       img: 'assets/images/folio-3.png',
       repoLink: '',
       pageLink: ''
     },
     {
-      title: 'Tower',
+      title: 'Universe',
       img: 'assets/images/folio-4.png',
       repoLink: '',
       pageLink: ''
@@ -89,7 +93,10 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.gridify();
     this.syncTimelineHeight();
+    this.bindResize();
   }
+
+
 
   gridify() {
     const gridEle = this.gridEle.nativeElement;
@@ -117,5 +124,43 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
         (square as HTMLElement).style.height = height.toString() + 'px';
       })
     })
+  }
+
+
+  bindResize() {
+    fromEvent(window, 'resize').pipe(debounceTime(500)).subscribe(() => {
+      this.setTimelineScrollProgress();
+    });
+
+  }
+
+  showGuide(index: number, event: Event) {
+    event.stopPropagation();
+    this.clearShow();
+    this.folios[index].show = true;
+  }
+
+  clearShow() {
+    this.folios.forEach((o) => {
+      o.show = false;
+    })
+  }
+
+  setTimelineScrollProgress(): void {
+    const tl = this.timeline.nativeElement as HTMLElement;
+    const tlc = this.timelineContainer.nativeElement as HTMLElement;
+    const tlRect = tl.getBoundingClientRect();
+    const tlcRect = tlc.getBoundingClientRect();
+    const offsetTop = tlRect.top; //from window.innerHeight to 0
+    const startGap = 300;
+    const progress = (window.innerHeight - offsetTop - startGap) / (innerHeight - startGap);
+    if (progress && progress <= 1 && window.innerHeight - offsetTop > startGap) {
+      const dist = tlRect.width - tlcRect.width;
+      gsap.to(tl, { x: -dist * progress, duration: 0.75 })
+    }
+    else if (window.innerHeight - offsetTop <= startGap) {
+      gsap.to(tl, { x: 0, duration: 0.75 })
+    }
+
   }
 }

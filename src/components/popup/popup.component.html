@@ -1,0 +1,11 @@
+<div class="popup" [class]="customPopupClass" (animationstart)="animationStart($event)"
+  (animationend)="animationEnd($event)">
+  <div class="popup__header">
+    <div *ngIf="hasCloseIcon" (click)="onClickClose()" class="popup__close">
+      <img src="assets/images/cross.svg" alt="">
+    </div>
+  </div>
+  <div class="popup__content">
+    <ng-template cdkPortalOutlet></ng-template>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
   active = false;
+  @Output('scroll') scroll = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -14,6 +15,10 @@ export class LayoutComponent implements OnInit {
 
   toggle() {
     this.active = !this.active;
+  }
+
+  onScroll(event: Event) {
+    this.scroll.emit(event);
   }
 
 }

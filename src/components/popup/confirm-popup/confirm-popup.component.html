@@ -1,0 +1,14 @@
+<div class="confirm-popup">
+  <div class="confirm-popup__title">
+    <span class="confirm-popup__text">{{title}}</span>
+  </div>
+  <div class="confirm-popup__content">
+    <span class="confirm-popup__text"> {{content}}</span>
+  </div>
+  <div *ngIf="cancelBtnText || confirmBtnText" class="confirm-popup__btns">
+    <button (click)="onCancelClick()" class="confirm-popup__btn square-button"
+      *ngIf="cancelBtnText">{{cancelBtnText}}</button>
+    <button (click)="onConfirmClick()" class="confirm-popup__btn square-button"
+      *ngIf="confirmBtnText">{{confirmBtnText}}</button>
+  </div>
+</div>

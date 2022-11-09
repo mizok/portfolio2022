@@ -1,3 +1,3 @@
-export * from './contact.service';
-export * from './modal.service';
+export * from './contact/contact.service';
+export * from './popup/popup.service';
 export * from './service.module';
