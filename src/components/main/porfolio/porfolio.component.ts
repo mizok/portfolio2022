@@ -127,7 +127,7 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
   }
 
   bindResize() {
-    fromEvent(window, 'resize').pipe(debounceTime(500)).subscribe(() => {
+    fromEvent(window, 'resize').pipe(debounceTime(200)).subscribe(() => {
       this.setTimelineScrollProgress();
     });
   }

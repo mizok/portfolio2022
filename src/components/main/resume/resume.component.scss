@@ -141,7 +141,7 @@
         line-height: 1.5;
 
         @include rwd($screen-pad-portrait) {
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
     }
 
@@ -163,6 +163,9 @@
         font-size: 1rem;
         line-height: 1.5;
 
+        @include rwd($screen-pad-portrait) {
+            font-size: 0.75rem;
+        }
 
     }
 

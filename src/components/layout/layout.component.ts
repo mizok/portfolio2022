@@ -109,8 +109,9 @@ export class LayoutComponent implements AfterViewInit {
 
   scrollTo(anchorName: string) {
     const targetEle = document.querySelector(`#${anchorName}`) as HTMLElement;
+    const offsetTop = targetEle.getBoundingClientRect().top;
     this.toggle(false).then(() => {
-      this.scrollbar.scrollIntoView(targetEle)
+      this.scrollbar.scrollTo(0, offsetTop + this.scrollbar.scrollTop, 2000)
     })
   }
 

@@ -537,7 +537,7 @@
         mask-image: linear-gradient(#{$deg}, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) #{$length});
     }
 
-    @else if($direction =='top') {
+    @else if($direction =='up') {
         $deg: 0deg;
         mask-image: linear-gradient(#{$deg}, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) #{$length});
     }

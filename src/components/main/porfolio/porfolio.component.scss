@@ -1,10 +1,21 @@
 @import 'util';
 
 .porfolio {
-    padding-bottom: 100px;
+    padding-bottom: 0px;
 
     &__head+&__body {
         margin-top: 50px;
+    }
+
+    &__body--expand {
+        margin: 0 -40px;
+
+        @include rwd($screen-pad-portrait) {
+            overflow-x: hidden;
+            overflow-y: visible;
+            margin: 0 -20px;
+
+        }
     }
 
     &__body--pad {
@@ -105,9 +116,15 @@
 }
 
 .porfolio-timeline {
-    padding: 100px;
+    padding: 0px 0 100px 0;
     $strokeWidth: 3px;
     display: inline-flex;
+
+    @include rwd($screen-pad-portrait) {
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 50px;
+    }
 
     &__item {
         display: flex;
@@ -142,8 +159,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-
     }
 
     &__circle:hover {
@@ -171,11 +186,9 @@
         flex: none;
         color: $dark-gray;
         box-shadow:
-            4.5px 4.5px 3.6px rgba(0, 0, 0, 0.024),
-            12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-            30.1px 30.1px 24.1px rgba(0, 0, 0, 0.046),
+            6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
             100px 100px 80px rgba(0, 0, 0, 0.07);
-
 
         p {
             padding: 0;

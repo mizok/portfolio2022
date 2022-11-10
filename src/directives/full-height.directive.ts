@@ -21,7 +21,7 @@ export class FullHeightDirective implements OnInit {
   }
 
   bindWindowResize() {
-    fromEvent(window, 'resize').pipe(debounceTime(1000)).subscribe(() => {
+    fromEvent(window, 'resize').pipe(debounceTime(200)).subscribe(() => {
       this.syncHeight();
     })
   }
