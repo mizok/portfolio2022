@@ -25,12 +25,31 @@ $sideWidth: 300px;
         }
     }
 
-    &--active &__inner {
-        transform: translateX(0)
-    }
 
     &__content {
         width: 100%;
+        position: relative;
+        z-index: 1;
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            top: 0;
+            background-color: $dark-gray;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 500ms;
+            z-index: 2;
+        }
+    }
+
+
+    &--active &__content::after {
+        opacity: 0.75;
+        pointer-events: auto;
     }
 
     &__content &__main {
@@ -58,6 +77,14 @@ $sideWidth: 300px;
     &__side {
         width: $sideWidth;
         display: block;
-        background-color: $dark-gray;
+        position: relative;
+        z-index: 2;
+
+        &::ng-deep {
+            >* {
+                height: 100%;
+            }
+        }
+
     }
 }

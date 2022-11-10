@@ -1,6 +1,8 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import Scrollbar from 'smooth-scrollbar';
+import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import Scrollbar, { ScrollbarPlugin } from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
+import { gsap, Linear } from 'gsap';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 Scrollbar.use(OverscrollPlugin);
 
@@ -23,6 +25,20 @@ const overscrollOptions = {
   glowColor: '#222a2d',
 };
 
+class StopperPlugin extends ScrollbarPlugin {
+  static override  pluginName = 'stopper';
+  static override defaultOptions = {
+    open: false,
+  };
+  override transformDelta(delta: any) {
+    return this.options.open ? { x: 0, y: 0 } : delta;
+  }
+}
+
+/* OverscrollPlugin */
+Scrollbar.use(StopperPlugin);
+
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -31,19 +47,52 @@ const overscrollOptions = {
 export class LayoutComponent implements AfterViewInit {
   active = false;
   @Output('scroll') scroll = new EventEmitter();
-  @ViewChild('scrollBox') scrollBox!: ElementRef;
+  @ViewChild('scrollBox') private scrollBox!: ElementRef;
+  @ViewChild('inner') private inner!: ElementRef;
+  @ViewChild('side') private side!: SideMenuComponent;
+  scrollbar !: Scrollbar;
+  private sideSize: number = 0;
+
+  @Input() menuItems: string[] = [];
   constructor() { }
   ngAfterViewInit(): void {
     this.initScroll();
+    this.getSideSize();
   }
 
-  toggle() {
-    this.active = !this.active;
+  getSideSize() {
+    const sideEle = this.side.eleRef.nativeElement as HTMLElement;
+    this.sideSize = sideEle.getBoundingClientRect().width;
+
+  }
+
+  toggle(status?: boolean) {
+    let dummy: any;
+    const prm = new Promise((res) => {
+      dummy = res;
+    })
+    this.active = status !== undefined ? status : !this.active;
+    this.scrollbar.updatePluginOptions('stopper', { open: this.active });
+    if (this.active) {
+      gsap.to(this.inner.nativeElement, {
+        x: 0, duration: 0.3, ease: Linear.easeInOut, onComplete: () => {
+          dummy();
+        }
+      });
+    }
+    else {
+      gsap.to(this.inner.nativeElement, {
+        x: -this.sideSize, duration: 0.3, ease: Linear.easeInOut, onComplete: () => {
+          dummy();
+        }
+      });
+    }
+    return prm;
   }
 
   initScroll() {
 
-    Scrollbar
+    this.scrollbar = Scrollbar
       .init(this.scrollBox.nativeElement as HTMLElement, {
         ...options,
         delegateTo: document,
@@ -51,10 +100,18 @@ export class LayoutComponent implements AfterViewInit {
           overscroll: { ...overscrollOptions },
         },
       })
-      .addListener((status) => {
-        this.scroll.emit(status);
-      })
 
+    this.scrollbar.addListener((status) => {
+      this.scroll.emit(status);
+    })
+
+  }
+
+  scrollTo(anchorName: string) {
+    const targetEle = document.querySelector(`#${anchorName}`) as HTMLElement;
+    this.toggle(false).then(() => {
+      this.scrollbar.scrollIntoView(targetEle)
+    })
   }
 
 }

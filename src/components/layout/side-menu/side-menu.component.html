@@ -1,1 +1,31 @@
-<p>side-menu works!</p>
+<div class="side-menu">
+    <div class="side-menu__title">
+        <h5>2022</h5>
+        <h1>Mizok Porfolio</h1>
+    </div>
+    <div class="side-menu__menu menu">
+        <div class="menu__inner">
+            <div class="menu__list">
+                <div class="menu__item" *ngFor="let item of items">
+                    <a href="#" class="menu__link" (click)="navigateListener($event,item)">{{item}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="side-menu__footer">
+        <div class="author">
+            <div class="author__name">Mizok.H</div>
+            <div class="author__links">
+                <a href="https://github.com/mizok" class="author__link">
+                    <img src="assets/images/github-g.svg" alt="github">
+                </a>
+                <a href="https://www.facebook.com/kuang.huang.18" class="author__link">
+                    <img src="assets/images/facebook-g.svg" alt="facebook">
+                </a>
+                <a href="https://twitter.com/MizokStudio" class="author__link">
+                    <img src="assets/images/twitter-g.svg" alt="twitter">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

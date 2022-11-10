@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { BannerAnimation } from './banner-animation';
+import { BannerAnimation } from './animation';
 
 @Component({
   selector: 'app-banner',

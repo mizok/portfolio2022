@@ -8,6 +8,14 @@ import { PorfolioComponent } from './porfolio/porfolio.component';
 })
 export class MainComponent implements OnInit {
   @ViewChild(PorfolioComponent, { static: true }) porfolioRef!: PorfolioComponent;
+  menuItems = [
+    'about',
+    'personality',
+    'porfolio',
+    'resume',
+    'contribute',
+    'contact'
+  ]
 
   constructor() { }
 

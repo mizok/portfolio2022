@@ -1,0 +1,31 @@
+.author {
+    display: flex;
+    padding: 20px 20px 20px 30px;
+    opacity: 1;
+
+    &__name {
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    &__name+&__links {
+        margin-left: auto;
+    }
+
+    &__links {
+        display: flex;
+    }
+
+    &__links &__link+&__link {
+        margin-left: 10px;
+    }
+
+    &__link {
+        width: 20px;
+        height: 20px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

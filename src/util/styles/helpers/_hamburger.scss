@@ -5,9 +5,12 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    background-color: $black;
+    transform: scale(0.8);
+    border-radius: 5px;
+    overflow: hidden;
 
     @include rwd($screen-pad-portrait) {
-        background-color: $gray;
         transform: scale(0.6)
     }
 
@@ -26,12 +29,18 @@
 
     &__line {
         height: 4px;
-        background-color: $gray;
+        background-color: $white;
         border-radius: 4px;
+        opacity: 0.75;
+        transition: opacity 500ms;
 
         @include rwd($screen-pad-portrait) {
             background-color: $white;
         }
+    }
+
+    &:hover &__line {
+        opacity: 1;
     }
 
     &__line+&__line {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-side-menu',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
-
-  constructor() { }
+  @Input() items: string[] = [];
+  @Output() navigate = new EventEmitter();
+  constructor(public eleRef: ElementRef) { }
 
   ngOnInit(): void {
+  }
+
+  navigateListener(event: Event, anchorName: string) {
+    event.preventDefault();
+    this.navigate.emit(anchorName)
   }
 
 }
