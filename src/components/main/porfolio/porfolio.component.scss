@@ -11,15 +11,14 @@
         margin: 0 -40px;
 
         @include rwd($screen-pad-portrait) {
-            overflow-x: hidden;
-            overflow-y: visible;
-            margin: 0 -20px;
-
+            overflow: auto;
+            margin: 0px;
+            @include custom-scroll();
         }
     }
 
-    &__body--pad {
-        padding-top: 50px;
+    &__body--bot {
+        padding-bottom: 50px;
     }
 }
 
@@ -116,14 +115,17 @@
 }
 
 .porfolio-timeline {
-    padding: 0px 0 100px 0;
     $strokeWidth: 3px;
     display: inline-flex;
+    align-items: center;
+
+    @include rwd($screen-bs-large) {
+        transform: none !important;
+    }
 
     @include rwd($screen-pad-portrait) {
         padding-left: 40px;
         padding-right: 40px;
-        padding-top: 50px;
     }
 
     &__item {
@@ -186,9 +188,10 @@
         flex: none;
         color: $dark-gray;
         box-shadow:
-            6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-            100px 100px 80px rgba(0, 0, 0, 0.07);
+            3.4px 1.7px 5.3px rgba(0, 0, 0, 0.028),
+            11.4px 5.8px 17.9px rgba(0, 0, 0, 0.042),
+            51px 26px 80px rgba(0, 0, 0, 0.07);
+
 
         p {
             padding: 0;
@@ -232,6 +235,15 @@
             transform: scale(1.5);
             pointer-events: none;
         }
+    }
+
+    &__end {
+
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 0 10px 20px;
+        border-color: transparent transparent transparent $black;
     }
 
 }
