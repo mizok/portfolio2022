@@ -132,6 +132,12 @@
     &__content {
         font-size: 1rem;
         font-weight: 400;
+        user-select: text;
+    }
+
+    a#{&}__content {
+        text-decoration: underline;
+        color: $dark-gray;
     }
 }
 

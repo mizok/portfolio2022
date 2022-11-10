@@ -28,7 +28,10 @@
                         <li class="about-contact-data__li about-contact-data-item"
                             *ngFor="let contactDataItem of contactDataGroup">
                             <div class="about-contact-data-item__title">{{contactDataItem.title}}</div>
-                            <div class="about-contact-data-item__content">{{contactDataItem.content}}</div>
+                            <div class="about-contact-data-item__content" *ngIf="!!contactDataItem.content">
+                                {{contactDataItem.content}}</div>
+                            <a [attr.href]="contactDataItem.url" class="about-contact-data-item__content"
+                                *ngIf="!!contactDataItem.url">{{contactDataItem.url}}</a>
                         </li>
                     </ul>
                 </div>

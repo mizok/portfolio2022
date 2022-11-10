@@ -145,6 +145,20 @@
         }
     }
 
+    a#{&}__unit-title {
+        color: $dark-gray;
+        text-decoration: underline;
+        transition: color 500ms;
+    }
+
+
+    a#{&}__unit-title:hover {
+        @include hasHover() {
+            color: $gray;
+        }
+    }
+
+
     &__unit-descrp {
         font-size: 1rem;
         line-height: 1.5;

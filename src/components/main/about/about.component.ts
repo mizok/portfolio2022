@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  contactDataGroup: { title: string, content: string }[] = [
+  contactDataGroup: { title: string, content?: string, url?: string }[] = [
     {
       title: 'FULLNAME',
       content: '黃廣誠 KUANG-CHENG HUANG'
@@ -25,7 +25,7 @@ export class AboutComponent implements OnInit {
     },
     {
       title: 'GITHUB',
-      content: 'https://github.com/mizok'
+      url: 'https://github.com/mizok'
     }
   ];
   skillDataGroup: { title: string, percent: number }[] = [

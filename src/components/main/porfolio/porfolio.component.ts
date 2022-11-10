@@ -18,45 +18,45 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     {
       title: '3D-Cube-Chat',
       img: 'assets/images/folio-1.png',
-      repoLink: '',
-      pageLink: ''
+      repoLink: 'https://github.com/mizok/3d-Cube-Chat',
+      pageLink: 'https://mizok.github.io/3d-Cube-Chat/'
     },
     {
       title: 'Cannon',
       img: 'assets/images/folio-2.png',
-      repoLink: '',
-      pageLink: ''
+      repoLink: 'https://github.com/mizok/three-js-playground/tree/master/src/examples/ex17-1',
+      pageLink: 'https://threejs-demo-brown.vercel.app/#ex17-1'
     },
     {
       title: 'Tower',
       img: 'assets/images/folio-3.png',
-      repoLink: '',
-      pageLink: ''
+      repoLink: 'https://github.com/mizok/three-js-playground/tree/master/src/examples/ex12',
+      pageLink: 'https://threejs-demo-brown.vercel.app/#ex12'
     },
     {
       title: 'Universe',
       img: 'assets/images/folio-4.png',
-      repoLink: '',
-      pageLink: ''
+      repoLink: 'https://github.com/mizok/generative-art-playground/tree/master/src/examples/universe-beta',
+      pageLink: 'https://mizok.github.io/generative-art-playground/#universe-beta'
     },
 
   ];
   timelineDatas: { title: string, url: string, img: string, time: string }[] = [
     {
       title: '新光銀行官網維護',
-      url: '文字',
+      url: 'https://www.skbank.com.tw/',
       time: '2018',
       img: 'assets/images/logo-skBank.png'
     },
     {
       title: '台新銀行官網重建',
-      url: '文字',
+      url: 'https://www.taishinbank.com.tw/',
       time: '2018',
       img: 'assets/images/logo-tsBank.png'
     },
     {
       title: '新光醫院官網建置',
-      url: '文字',
+      url: 'https://www.skh.org.tw/skh/index.html',
       time: '2019',
       img: 'assets/images/logo-skHospital.png'
     },
@@ -68,19 +68,19 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     },
     {
       title: '新逸資訊公司官網重建',
-      url: '文字',
+      url: 'https://www.neux.com.tw/',
       time: '2020',
       img: 'assets/images/logo-neux.svg'
     },
     {
       title: '新光金控官網重建',
-      url: '文字',
+      url: 'https://www.skfh.com.tw/',
       time: '2021',
       img: 'assets/images/logo-skFinancial.png'
     },
     {
       title: '元富證券官網重建',
-      url: '文字',
+      url: 'https://www.masterlink.com.tw/',
       time: '2021',
       img: 'assets/images/logo-masterlink.svg'
     }
@@ -126,12 +126,10 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     })
   }
 
-
   bindResize() {
     fromEvent(window, 'resize').pipe(debounceTime(500)).subscribe(() => {
       this.setTimelineScrollProgress();
     });
-
   }
 
   showGuide(index: number, event: Event) {

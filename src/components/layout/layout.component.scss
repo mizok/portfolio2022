@@ -39,6 +39,13 @@ $sideWidth: 300px;
 
     &__main {
         overflow: auto;
+
+        &::ng-deep {
+            >canvas {
+                pointer-events: none;
+            }
+        }
+
     }
 
     &__toggler {
