@@ -39,20 +39,6 @@ $sideWidth: 300px;
 
     &__main {
         overflow: auto;
-
-        &::ng-deep {
-            [full-height] {
-                display: block;
-                height: 100%;
-            }
-        }
-    }
-
-    &__overflow-wrapper {
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
     }
 
     &__toggler {

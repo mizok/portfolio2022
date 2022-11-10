@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainModule } from './main';
 import { LayoutModule } from './layout'
+import { PopupModule } from './popup';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { LayoutModule } from './layout'
   imports: [
     CommonModule,
     MainModule,
-    LayoutModule
+    LayoutModule,
+    PopupModule
   ]
 })
 export class ComponentsModule { }

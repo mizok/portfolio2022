@@ -11,7 +11,7 @@ interface unitData {
   styleUrls: ['./resume.component.scss']
 })
 export class ResumeComponent implements OnInit {
-  trees: { title: string, img: string, units: unitData[] }[] = [
+  trees: { title: string, img: string, units: unitData[], url?: string }[] = [
     {
       title: 'Education',
       img: 'assets/images/school.svg',

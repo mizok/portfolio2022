@@ -37,6 +37,20 @@
     &__title {
         font-size: 1.5rem;
         color: $white;
+        position: relative;
+
+        &:after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 40px;
+            background-color: $white;
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
     }
 
     &__title+&__links {
@@ -77,12 +91,6 @@
         pointer-events: none;
     }
 
-    @include hasHover() {
-        &:hover &__guide {
-            pointer-events: auto;
-            opacity: 1;
-        }
-    }
 
     &--show &__guide {
         pointer-events: auto;
@@ -97,7 +105,7 @@
 }
 
 .porfolio-timeline {
-
+    padding: 100px;
     $strokeWidth: 3px;
     display: inline-flex;
 

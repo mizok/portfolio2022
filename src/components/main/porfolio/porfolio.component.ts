@@ -140,6 +140,11 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     this.folios[index].show = true;
   }
 
+  clearGuide(index: number, event: Event) {
+    event.stopPropagation();
+    this.folios[index].show = false;
+  }
+
   clearShow() {
     this.folios.forEach((o) => {
       o.show = false;
@@ -156,7 +161,7 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     const progress = (window.innerHeight - offsetTop - startGap) / (innerHeight - startGap);
     if (progress && progress <= 1 && window.innerHeight - offsetTop > startGap) {
       const dist = tlRect.width - tlcRect.width;
-      gsap.to(tl, { x: -dist * progress, duration: 0.75 })
+      gsap.to(tl, { x: -dist * progress, duration: 1 })
     }
     else if (window.innerHeight - offsetTop <= startGap) {
       gsap.to(tl, { x: 0, duration: 0.75 })

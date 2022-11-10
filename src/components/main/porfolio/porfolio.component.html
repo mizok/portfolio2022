@@ -15,6 +15,7 @@
         <div class="porfolio__body">
             <div class="porfolio-grid" #grid>
                 <div class="porfolio-grid__cell porfolio-grid-cell" *ngFor="let folio of folios; let i = index"
+                    (mouseenter)="showGuide(i,$event)" (mouseleave)="clearGuide(i,$event)"
                     (touchstart)="showGuide(i,$event)" [class.porfolio-grid-cell--show]="folio?.show">
                     <div class="porfolio-grid-cell__guide">
                         <div class="porfolio-grid-cell__title">{{folio.title}}</div>

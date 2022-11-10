@@ -31,6 +31,12 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@directives": [
+        "./src/directives"
+      ],
+      "@directives/*": [
+        "./src/directives/*"
+      ],
     },
     "lib": [
       "es2020",

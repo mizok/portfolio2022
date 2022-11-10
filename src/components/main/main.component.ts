@@ -16,8 +16,7 @@ export class MainComponent implements OnInit {
   }
 
 
-  layoutScroll(event: Event) {
-    const target = event.target as HTMLElement;
+  layoutScroll() {
     this.porfolioRef.setTimelineScrollProgress();
   }
 

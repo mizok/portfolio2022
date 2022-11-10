@@ -18,6 +18,12 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@directives": [
+        "./src/directives"
+      ],
+      "@directives/*": [
+        "./src/directives/*"
+      ],
     },
   },
   "files": [

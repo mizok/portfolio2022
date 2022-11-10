@@ -55,7 +55,7 @@ export class ContactComponent implements OnInit {
     const form = (e.target as HTMLFormElement);
     if (this.targetForm.invalid) {
       const messagePopupData = {
-        message: '您送出的表單中有缺漏的部分，煩請確認補填後重新發送。'
+        message: '您送出的表單中有缺漏或無效的部分，<br>煩請確認補填後重新發送。'
       }
       this.popupService.open(MessagePopupComponent, this.viewContainerRef, { data: messagePopupData });
       return;
@@ -63,7 +63,7 @@ export class ContactComponent implements OnInit {
     this.contactService.doPost(form).subscribe({
       complete: () => {
         const messagePopupData = {
-          message: '感謝您的回覆，您將在五分鐘內於您的信箱中收到確認回覆通知。'
+          message: '感謝您的回覆，<br>您將在五分鐘內於您的信箱中收到確認回覆通知。'
         }
         this.popupService.open(MessagePopupComponent, this.viewContainerRef, { data: messagePopupData })
         form.reset();
