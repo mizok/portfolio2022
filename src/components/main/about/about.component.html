@@ -31,7 +31,7 @@
                             <div class="about-contact-data-item__content" *ngIf="!!contactDataItem.content">
                                 {{contactDataItem.content}}</div>
                             <a [attr.href]="contactDataItem.url" class="about-contact-data-item__content"
-                                *ngIf="!!contactDataItem.url">{{contactDataItem.url}}</a>
+                                *ngIf="!!contactDataItem.url" target="_blank">{{contactDataItem.url}}</a>
                         </li>
                     </ul>
                 </div>

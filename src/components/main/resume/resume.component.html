@@ -22,7 +22,7 @@
                         </div>
                         <div class="resume-tree__latter">
                             <div class="resume-tree__unit-title" *ngIf="!unit?.url">{{unit.unitTitle}}</div>
-                            <a [attr.href]="unit?.url" class="resume-tree__unit-title"
+                            <a [attr.href]="unit?.url" class="resume-tree__unit-title" target="_blank"
                                 *ngIf="!!unit?.url">{{unit.unitTitle}}</a>
                             <div class="resume-tree__unit-descrp">{{unit.unitDescrp}}</div>
                         </div>
