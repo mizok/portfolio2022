@@ -1,4 +1,4 @@
-<div class="porfolio section " (touchstart)="clearShow()" id="porfolio">
+<div class="porfolio section " id="porfolio">
     <div class="section__inner section__inner--wide">
         <div class="porfolio__head">
             <div class="section__name">porfolio</div>
@@ -16,7 +16,7 @@
             <div class="porfolio-grid" #grid>
                 <div class="porfolio-grid__cell porfolio-grid-cell" *ngFor="let folio of folios; let i = index"
                     (mouseenter)="showGuide(i,$event)" (mouseleave)="clearGuide(i,$event)"
-                    (touchstart)="showGuide(i,$event)" [class.porfolio-grid-cell--show]="folio?.show">
+                    [class.porfolio-grid-cell--show]="folio?.show">
                     <div class="porfolio-grid-cell__guide">
                         <div class="porfolio-grid-cell__title">{{folio.title}}</div>
                         <div class="porfolio-grid-cell__links">
@@ -30,6 +30,9 @@
                     </div>
                     <div class="porfolio-grid-cell__img">
                         <img draggable="false" [attr.src]="folio.img" alt="porfolio image">
+                    </div>
+                    <div class="porfolio-grid-cell__mobile-btn" (touchstart)="showGuide(i,$event)">
+                        <img src="assets/images/more.svg" alt="">
                     </div>
                 </div>
             </div>
