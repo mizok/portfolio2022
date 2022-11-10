@@ -1,4 +1,4 @@
-<div class="porfolio section " id="porfolio">
+<div class="porfolio section " (touchstart)="clearShow()" id="porfolio">
     <div class="section__inner section__inner--wide">
         <div class="porfolio__head">
             <div class="section__name">porfolio</div>
@@ -31,7 +31,7 @@
                     <div class="porfolio-grid-cell__img">
                         <img draggable="false" [attr.src]="folio.img" alt="porfolio image">
                     </div>
-                    <div class="porfolio-grid-cell__mobile-btn" (touchstart)="showGuide(i,$event)">
+                    <div class="porfolio-grid-cell__mobile-btn" (touchstart)="toggleGuide(i,$event)">
                         <img src="assets/images/more.svg" alt="">
                     </div>
                 </div>

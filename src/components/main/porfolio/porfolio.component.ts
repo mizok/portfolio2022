@@ -138,6 +138,11 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     this.folios[index].show = true;
   }
 
+  toggleGuide(index: number, event: Event) {
+    event.stopPropagation();
+    this.folios[index].show = !this.folios[index].show;
+  }
+
   clearGuide(index: number, event: Event) {
     event.stopPropagation();
     this.folios[index].show = false;
