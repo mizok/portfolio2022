@@ -19,7 +19,7 @@
         padding-bottom: 50px;
     }
 
-    &__body--pc {
+    &__body--pc.is-mobile {
         @include rwd($screen-bs-large) {
             display: none;
         }
@@ -27,6 +27,9 @@
 
     &__body--mobile {
         display: none;
+    }
+
+    &__body--mobile.is-mobile {
 
         @include rwd($screen-bs-large) {
             display: block;
@@ -155,9 +158,12 @@
     display: inline-flex;
     align-items: center;
 
-    @include rwd($screen-bs-large) {
-        transform: none !important;
+    &.is-mobile {
+        @include rwd($screen-bs-large) {
+            transform: none !important;
+        }
     }
+
 
     @include rwd($screen-pad-portrait) {
         padding-left: 40px;

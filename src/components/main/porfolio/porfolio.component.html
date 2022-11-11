@@ -42,8 +42,9 @@
                 right to show you the source code, just take a look if you are interested.
             </div>
         </div>
-        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--pc" #timelineContainer>
-            <div class="porfolio-timeline" #timeline>
+        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--pc" appIsMobile
+            #timelineContainer>
+            <div class="porfolio-timeline" #timeline appIsMobile>
                 <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
                     #timelineItem>
                     <ng-container [ngTemplateOutlet]="i%2===0?even:odd" [ngTemplateOutletContext]="{data:timelineData}">
@@ -82,7 +83,7 @@
                 <div class="porfolio-timeline__end"></div>
             </div>
         </div>
-        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--mobile"
+        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--mobile" appIsMobile
             #mobileTimelineContainer>
             <div class="porfolio-timeline" #timeline>
                 <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "

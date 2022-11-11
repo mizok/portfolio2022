@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
-
+import { DirectivesModule } from '@directives'
 @NgModule({
   declarations: [
     SideMenuComponent,
@@ -11,7 +11,8 @@ import { LayoutComponent } from './layout.component';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DirectivesModule
   ],
   exports: [
     LayoutComponent
