@@ -11,8 +11,8 @@ export const scrollOptions = {
 
 export const overscrollOptions = {
     enable: true,
-    effect: 'glow',
+    effect: 'bounce',
     damping: 0.2,
-    maxOverscroll: 150,
+    maxOverscroll: 50,
     glowColor: '#222a2d',
 };
