@@ -3,7 +3,7 @@ import * as Masonry from 'masonry-layout';
 import * as imagesloaded from 'imagesloaded';
 import { gsap } from 'gsap';
 import { debounceTime, fromEvent } from 'rxjs'
-import { scrollOptions, overscrollOptions } from '@util/function/scroll-config'
+import { scrollOptions } from '@util/function/scroll-config'
 import Scrollbar from 'smooth-scrollbar';
 
 @Component({
@@ -162,10 +162,7 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     const container = this.mobileTimelineContainer.nativeElement as HTMLElement;
     this.timelineContainerScrollbar = Scrollbar
       .init(container as HTMLElement, {
-        ...scrollOptions,
-        plugins: {
-          overscroll: { ...overscrollOptions },
-        },
+        ...scrollOptions
       })
   }
 }
