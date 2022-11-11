@@ -37,6 +37,12 @@
       "@directives/*": [
         "./src/directives/*"
       ],
+      "@util": [
+        "./src/util"
+      ],
+      "@util/*": [
+        "./src/util/*"
+      ],
     },
     "lib": [
       "es2020",

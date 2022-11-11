@@ -46,7 +46,48 @@
                 right to show you the source code, just take a look if you are interested.
             </div>
         </div>
-        <div class="porfolio__body porfolio__body--bot porfolio__body--expand" #timelineContainer>
+        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--pc" #timelineContainer>
+            <div class="porfolio-timeline" #timeline>
+                <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
+                    #timelineItem>
+                    <ng-container [ngTemplateOutlet]="i%2===0?even:odd" [ngTemplateOutletContext]="{data:timelineData}">
+                    </ng-container>
+                </div>
+                <ng-template #even let-data="data">
+                    <div
+                        class="porfolio-timeline__square porfolio-timeline__square--up porfolio-timeline__square--blank">
+                    </div>
+                    <div class="porfolio-timeline__circle">
+                        <p>{{data.time}}</p>
+                    </div>
+                    <div class="porfolio-timeline__square porfolio-timeline__square--down">
+                        <img draggable="false" [attr.src]="data.img" alt="logo" draggable="false">
+                        <h3>{{data.title}}</h3>
+                        <a class="porfolio-timeline__link" [attr.href]="data.url" target="_blank">
+                            <img draggable="false" src="assets/images/link.svg" alt="link">
+                        </a>
+                    </div>
+                </ng-template>
+                <ng-template #odd let-data="data">
+                    <div class="porfolio-timeline__square porfolio-timeline__square--up">
+                        <img draggable="false" [attr.src]="data.img" alt="logo">
+                        <h3>{{data.title}}</h3>
+                        <a class="porfolio-timeline__link" [attr.href]="data.url" target="_blank">
+                            <img draggable="false" src="assets/images/link.svg" alt="link">
+                        </a>
+                    </div>
+                    <div class="porfolio-timeline__circle">
+                        <p>{{data.time}}</p>
+                    </div>
+                    <div
+                        class="porfolio-timeline__square porfolio-timeline__square--down porfolio-timeline__square--blank">
+                    </div>
+                </ng-template>
+                <div class="porfolio-timeline__end"></div>
+            </div>
+        </div>
+        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--mobile"
+            #mobileTimelineContainer>
             <div class="porfolio-timeline" #timeline>
                 <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
                     #timelineItem>

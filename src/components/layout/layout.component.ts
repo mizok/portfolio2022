@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { scrollOptions, overscrollOptions } from '@util/function/scroll-config'
 import Scrollbar, { ScrollbarPlugin } from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 import { gsap, Linear } from 'gsap';
@@ -6,24 +7,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 
 Scrollbar.use(OverscrollPlugin);
 
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-const options = {
-  damping: isMobile ? 0.05 : 0.1,
-  thumbMinSize: 20,
-  renderByPixels: !('ontouchstart' in document),
-  alwaysShowTracks: false,
-  continuousScrolling: true,
-};
 
 
-const overscrollOptions = {
-  enable: true,
-  effect: 'glow',
-  damping: 0.2,
-  maxOverscroll: 150,
-  glowColor: '#222a2d',
-};
 
 class StopperPlugin extends ScrollbarPlugin {
   static override  pluginName = 'stopper';
@@ -37,6 +22,26 @@ class StopperPlugin extends ScrollbarPlugin {
 
 /* OverscrollPlugin */
 Scrollbar.use(StopperPlugin);
+
+class DisableScrollPlugin extends ScrollbarPlugin {
+  static override pluginName = 'disableScroll';
+
+  static override defaultOptions = {
+    direction: '',
+  };
+
+  override transformDelta(delta: any) {
+    if (this.options.direction) {
+      delta[this.options.direction] = 0;
+    }
+
+    return { ...delta };
+  }
+}
+
+// load the plugin
+Scrollbar.use(DisableScrollPlugin);
+
 
 
 @Component({
@@ -94,10 +99,13 @@ export class LayoutComponent implements AfterViewInit {
 
     this.scrollbar = Scrollbar
       .init(this.scrollBox.nativeElement as HTMLElement, {
-        ...options,
+        ...scrollOptions,
         delegateTo: document,
         plugins: {
           overscroll: { ...overscrollOptions },
+          disableScroll: {
+            direction: 'x',
+          },
         },
       })
 

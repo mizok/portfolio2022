@@ -24,6 +24,12 @@
       "@directives/*": [
         "./src/directives/*"
       ],
+      "@util": [
+        "./src/util"
+      ],
+      "@util/*": [
+        "./src/util/*"
+      ],
     },
   },
   "files": [

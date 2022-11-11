@@ -3,6 +3,8 @@ import * as Masonry from 'masonry-layout';
 import * as imagesloaded from 'imagesloaded';
 import { gsap } from 'gsap';
 import { debounceTime, fromEvent } from 'rxjs'
+import { scrollOptions, overscrollOptions } from '@util/function/scroll-config'
+import Scrollbar from 'smooth-scrollbar';
 
 @Component({
   selector: 'app-porfolio',
@@ -13,7 +15,9 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
   @ViewChild('grid') gridEle!: ElementRef;
   @ViewChild('timeline') timeline!: ElementRef;
   @ViewChild('timelineContainer') timelineContainer!: ElementRef;
+  @ViewChild('mobileTimelineContainer') mobileTimelineContainer!: ElementRef;
   @ViewChildren('timelineItem') timelineItems!: QueryList<ElementRef>;
+  timelineContainerScrollbar?: Scrollbar;
   folios: { title: string, img: string, repoLink: string, pageLink: string, show?: boolean }[] = [
     {
       title: '3D-Cube-Chat',
@@ -92,11 +96,9 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     this.gridify();
-    this.syncTimelineHeight();
     this.bindResize();
+    this.setTimelineContainerScroll()
   }
-
-
 
   gridify() {
     const gridEle = this.gridEle.nativeElement;
@@ -107,22 +109,6 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
         resize: true,
         gutter: 10,
       });
-    })
-  }
-
-  syncTimelineHeight() {
-    this.timelineItems.toArray().forEach((o) => {
-      let height = 0;
-      const squares = (o.nativeElement as HTMLElement).querySelectorAll('.porfolio-timeline__square');
-      squares.forEach((square) => {
-        const squareHeight = (square as HTMLElement).offsetHeight;
-        if (squareHeight >= height) {
-          height = squareHeight;
-        }
-      })
-      squares.forEach((square) => {
-        (square as HTMLElement).style.height = height.toString() + 'px';
-      })
     })
   }
 
@@ -170,5 +156,16 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
       gsap.to(tl, { x: 0, duration: 0.75 })
     }
 
+  }
+
+  setTimelineContainerScroll() {
+    const container = this.mobileTimelineContainer.nativeElement as HTMLElement;
+    this.timelineContainerScrollbar = Scrollbar
+      .init(container as HTMLElement, {
+        ...scrollOptions,
+        plugins: {
+          overscroll: { ...overscrollOptions },
+        },
+      })
   }
 }
