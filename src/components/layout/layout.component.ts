@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
-import { scrollOptions, overscrollOptions } from '@util/function/scroll-config'
+import { scrollOptions, overscrollOptions } from '@util/function'
 import Scrollbar, { ScrollbarPlugin } from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 import { gsap, Linear } from 'gsap';

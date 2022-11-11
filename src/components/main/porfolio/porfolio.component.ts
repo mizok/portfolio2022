@@ -3,7 +3,7 @@ import * as Masonry from 'masonry-layout';
 import * as imagesloaded from 'imagesloaded';
 import { gsap } from 'gsap';
 import { debounceTime, fromEvent } from 'rxjs'
-import { scrollOptions, overscrollOptions } from '@util/function/scroll-config'
+import { scrollOptions, overscrollOptions, childOf } from '@util/function'
 import Scrollbar from 'smooth-scrollbar';
 
 @Component({
@@ -13,6 +13,7 @@ import Scrollbar from 'smooth-scrollbar';
 })
 export class PorfolioComponent implements OnInit, AfterViewInit {
   @ViewChild('grid') gridEle!: ElementRef;
+  @ViewChildren('gridCell') gridCells!: QueryList<ElementRef>;
   @ViewChild('timeline') timeline!: ElementRef;
   @ViewChild('timelineContainer') timelineContainer!: ElementRef;
   @ViewChild('mobileTimelineContainer') mobileTimelineContainer!: ElementRef;
@@ -112,33 +113,26 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     })
   }
 
-  preventBubbling(ev: Event) {
-    ev.stopPropagation();
-  }
-
   bindResize() {
     fromEvent(window, 'resize').pipe(debounceTime(200)).subscribe(() => {
       this.setTimelineScrollProgress();
     });
   }
 
-  showGuide(index: number, event: Event) {
-    event.stopPropagation();
-    this.clearShow();
+  showGuide(index: number) {
+    this.folios.filter((o, i) => i !== index).forEach((o) => {
+      o.show = false;
+    })
     this.folios[index].show = true;
   }
 
-  toggleGuide(index: number, event: Event) {
-    event.stopPropagation();
-    this.folios[index].show = !this.folios[index].show;
-  }
-
-  clearGuide(index: number, event: Event) {
-    event.stopPropagation();
-    this.folios[index].show = false;
-  }
-
-  clearShow() {
+  @HostListener('document:touchend', ['$event'])
+  clearShow(ev: Event) {
+    const targetIsGrid = this.gridCells.toArray().filter((o) => {
+      console.log(o.nativeElement, ev.target, childOf(ev.target, o.nativeElement));
+      return childOf(ev.target, o.nativeElement)
+    }).length > 0;
+    if (targetIsGrid) return;
     this.folios.forEach((o) => {
       o.show = false;
     })
