@@ -113,6 +113,12 @@
         pointer-events: none;
     }
 
+    @include hasHover() {
+        &:hover &__guide {
+            pointer-events: auto;
+            opacity: 1;
+        }
+    }
 
     &--show &__guide {
         pointer-events: auto;
