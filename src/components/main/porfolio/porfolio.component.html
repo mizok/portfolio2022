@@ -20,10 +20,12 @@
                     <div class="porfolio-grid-cell__guide">
                         <div class="porfolio-grid-cell__title">{{folio.title}}</div>
                         <div class="porfolio-grid-cell__links">
-                            <a [attr.href]="folio.repoLink" class="porfolio-grid-cell__link" target="_blank">
+                            <a [attr.href]="folio.repoLink" class="porfolio-grid-cell__link" target="_blank"
+                                (touchstart)="preventBubbling($event)">
                                 <img src="assets/images/github.svg" alt="github">
                             </a>
-                            <a [attr.href]="folio.pageLink" class="porfolio-grid-cell__link" target="_blank">
+                            <a [attr.href]="folio.pageLink" class="porfolio-grid-cell__link" target="_blank"
+                                (touchstart)="preventBubbling($event)">
                                 <img src="assets/images/web.svg" alt="webpage">
                             </a>
                         </div>

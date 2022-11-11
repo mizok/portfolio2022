@@ -112,6 +112,10 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     })
   }
 
+  preventBubbling(ev: Event) {
+    ev.stopPropagation();
+  }
+
   bindResize() {
     fromEvent(window, 'resize').pipe(debounceTime(200)).subscribe(() => {
       this.setTimelineScrollProgress();
