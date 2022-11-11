@@ -62,6 +62,7 @@ $sideWidth: 300px;
         &::ng-deep {
             >canvas {
                 pointer-events: none;
+                display: none !important;
             }
         }
 

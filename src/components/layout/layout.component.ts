@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
-import { scrollOptions } from '@util/function/scroll-config'
+import { scrollOptions, overscrollOptions } from '@util/function/scroll-config'
 import Scrollbar, { ScrollbarPlugin } from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 import { gsap, Linear } from 'gsap';
@@ -102,6 +102,7 @@ export class LayoutComponent implements AfterViewInit {
         ...scrollOptions,
         delegateTo: document,
         plugins: {
+          overscroll: { ...overscrollOptions },
           disableScroll: {
             direction: 'x',
           },

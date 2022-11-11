@@ -8,3 +8,11 @@ export const scrollOptions = {
     continuousScrolling: true,
 };
 
+
+export const overscrollOptions = {
+    enable: false,
+    effect: 'glow',
+    damping: 0.2,
+    maxOverscroll: 50,
+    glowColor: '#222a2d',
+};
