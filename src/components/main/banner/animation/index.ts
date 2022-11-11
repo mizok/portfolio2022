@@ -1,6 +1,6 @@
 const fragmentShader = require('./glsl/fragment.glsl');
 const vertexShader = require('./glsl/vertex.glsl');
-import { Scene, PerspectiveCamera, WebGLRenderer, PlaneGeometry, Mesh, Color, RawShaderMaterial, MeshBasicMaterial } from 'three';
+import { Scene, PerspectiveCamera, WebGLRenderer, PlaneGeometry, Mesh, Color, RawShaderMaterial, MeshBasicMaterial, DoubleSide, Clock } from 'three';
 
 export class BannerAnimation {
     private scene!: Scene;
@@ -8,6 +8,8 @@ export class BannerAnimation {
     private camera!: PerspectiveCamera;
     private plane!: Mesh;
     private rect !: DOMRect;
+    private mat!: RawShaderMaterial;
+    private clock!: Clock;
     constructor(private element: HTMLElement) {
         this.init()
     }
@@ -15,9 +17,11 @@ export class BannerAnimation {
     init() {
         this.initRenderEnv();
         this.initPlane();
-        this.tick();
+        this.sizing();
+        this.tick(this.clock.getElapsedTime());
     }
     initRenderEnv() {
+        this.clock = new Clock();
         this.rect = this.element.getBoundingClientRect();
         this.scene = new Scene();
         this.renderer = new WebGLRenderer({
@@ -32,7 +36,6 @@ export class BannerAnimation {
         );
         this.camera.position.z = 5;
         this.scene.add(this.camera);
-        this.sizing();
         this.element.append(this.renderer.domElement);
     }
     sizing() {
@@ -44,26 +47,29 @@ export class BannerAnimation {
         this.renderer.setSize(this.rect.width, this.rect.height);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.renderer.setViewport(0, 0, this.rect.width, this.rect.height);
+        this.plane.scale.set(this.rect.width / 30, this.rect.height / 15, 1)
     }
     initPlane() {
-        const geo = new PlaneGeometry(10, 10, 1, 1);
-        // const mat = new RawShaderMaterial({
-        //     vertexShader: vertexShader.default,
-        //     fragmentShader: fragmentShader.default
-        // });
-        const mat = new MeshBasicMaterial({
-            color: new Color('red')
-        })
-        this.plane = new Mesh(geo, mat);
-        this.plane.rotation.x = Math.PI / 2;
+        const geo = new PlaneGeometry(1, 1, 50, 50);
+        this.mat = new RawShaderMaterial({
+            vertexShader: vertexShader.default,
+            fragmentShader: fragmentShader.default,
+            uniforms:
+            {
+                uFrequency: { value: 10 }
+            }
+        });
+
+        this.plane = new Mesh(geo, this.mat);
         this.scene.add(this.plane);
     }
 
-    tick() {
+    tick(time: number) {
         this.renderer.render(this.scene, this.camera);
         requestAnimationFrame(
             () => {
-                this.tick()
+                this.mat.uniforms['uFrequency'].value = time * 4
+                this.tick(this.clock.getElapsedTime())
             }
         );
     }

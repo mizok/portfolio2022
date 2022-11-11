@@ -7,4 +7,23 @@
 .banner {
 
     background-color: $black;
+    position: relative;
+    display: block;
+
+    &__slogan {
+        font-size: 2rem;
+        font-weight: 400;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: transparentize($black, 0.2);
+        color: $white;
+        padding: 10px;
+        white-space: nowrap;
+
+        @include rwd($screen-pad-portrait) {
+            font-size: 1.5rem;
+        }
+    }
 }
