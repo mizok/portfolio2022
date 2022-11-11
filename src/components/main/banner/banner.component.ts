@@ -1,5 +1,5 @@
-import { Component, ViewChild, AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
-import { FullHeightDirective } from '@directives';
+import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { fromEvent } from 'rxjs';
 import { BannerAnimation } from './animation';
 
 @Component({
@@ -10,7 +10,6 @@ import { BannerAnimation } from './animation';
 export class BannerComponent implements AfterViewInit {
   animationInstance!: BannerAnimation;
   @ViewChild('banner') banner!: ElementRef;
-  @ViewChild(FullHeightDirective, { static: true }) fullHeightDirective!: FullHeightDirective;
   constructor() { }
 
   ngAfterViewInit(): void {
@@ -19,7 +18,7 @@ export class BannerComponent implements AfterViewInit {
 
   initAnimation() {
     this.animationInstance = new BannerAnimation(this.banner.nativeElement)
-    this.fullHeightDirective.$resize.subscribe(() => {
+    fromEvent(window, 'resize').subscribe(() => {
       this.animationInstance.sizing();
     })
   }

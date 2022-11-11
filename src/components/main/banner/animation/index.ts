@@ -34,9 +34,10 @@ export class BannerAnimation {
             0.1,
             1000
         );
-        this.camera.position.z = 5;
+        this.camera.position.z = 2.5;
         this.scene.add(this.camera);
         this.element.append(this.renderer.domElement);
+        this.sizing();
     }
     sizing() {
         this.rect = this.element.getBoundingClientRect();
@@ -47,10 +48,13 @@ export class BannerAnimation {
         this.renderer.setSize(this.rect.width, this.rect.height);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.renderer.setViewport(0, 0, this.rect.width, this.rect.height);
-        this.plane.scale.set(this.rect.width / 30, this.rect.height / 15, 1)
+        if (!!this.plane) {
+            this.planeFitPerspectiveCamera();
+        }
+
     }
     initPlane() {
-        const geo = new PlaneGeometry(1, 1, 50, 50);
+        const geo = new PlaneGeometry(1, 2, 50, 50);
         this.mat = new RawShaderMaterial({
             vertexShader: vertexShader.default,
             fragmentShader: fragmentShader.default,
@@ -62,6 +66,16 @@ export class BannerAnimation {
 
         this.plane = new Mesh(geo, this.mat);
         this.scene.add(this.plane);
+    }
+
+    planeFitPerspectiveCamera(relativeZ = null) {
+        const cameraZ = relativeZ !== null ? relativeZ : this.camera.position.z;
+        const distance = cameraZ - this.plane.position.z;
+        const vFov = this.camera.fov * Math.PI / 180;
+        const scaleY = 2 * Math.tan(vFov / 2) * distance;
+        const scaleX = scaleY * this.camera.aspect;
+
+        this.plane.scale.set(scaleX, scaleY, 1);
     }
 
     tick(time: number) {

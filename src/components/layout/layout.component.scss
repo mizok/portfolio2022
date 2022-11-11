@@ -57,7 +57,7 @@ $sideWidth: 300px;
     }
 
     &__main {
-        overflow: auto;
+        overflow: hidden;
 
         &::ng-deep {
             >canvas {
