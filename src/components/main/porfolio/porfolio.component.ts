@@ -129,7 +129,6 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
   @HostListener('document:touchend', ['$event'])
   clearShow(ev: Event) {
     const targetIsGrid = this.gridCells.toArray().filter((o) => {
-      console.log(o.nativeElement, ev.target, childOf(ev.target, o.nativeElement));
       return childOf(ev.target, o.nativeElement)
     }).length > 0;
     if (targetIsGrid) return;

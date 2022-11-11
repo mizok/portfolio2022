@@ -1,11 +1,12 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { debounceTime, fromEvent } from 'rxjs';
+import { debounceTime, fromEvent, Observable } from 'rxjs';
 
 @Directive({
   selector: '[appFullHeight]'
 })
 export class FullHeightDirective implements OnInit {
   @Input() minHeight: number = 0;
+  $resize!: Observable<any>
   constructor(private ele: ElementRef) {
 
   }
@@ -21,7 +22,8 @@ export class FullHeightDirective implements OnInit {
   }
 
   bindWindowResize() {
-    fromEvent(window, 'resize').pipe(debounceTime(200)).subscribe(() => {
+    this.$resize = fromEvent(window, 'resize').pipe(debounceTime(200));
+    this.$resize.subscribe(() => {
       this.syncHeight();
     })
   }
