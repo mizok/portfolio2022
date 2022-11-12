@@ -7,11 +7,11 @@ import { scrollOptions, overscrollOptions, childOf } from '@util/function'
 import Scrollbar from 'smooth-scrollbar';
 
 @Component({
-  selector: 'app-porfolio',
-  templateUrl: './porfolio.component.html',
-  styleUrls: ['./porfolio.component.scss']
+  selector: 'app-portfolio',
+  templateUrl: './portfolio.component.html',
+  styleUrls: ['./portfolio.component.scss']
 })
-export class PorfolioComponent implements OnInit, AfterViewInit {
+export class PortfolioComponent implements OnInit, AfterViewInit {
   @ViewChild('grid') gridEle!: ElementRef;
   @ViewChildren('gridCell') gridCells!: QueryList<ElementRef>;
   @ViewChild('timeline') timeline!: ElementRef;
@@ -117,7 +117,7 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     imagesloaded(gridEle, () => {
       this.msnryInstance = new Masonry(gridEle, {
         // options
-        itemSelector: '.porfolio-grid__cell',
+        itemSelector: '.portfolio-grid__cell',
         resize: true,
         gutter: 10,
       });

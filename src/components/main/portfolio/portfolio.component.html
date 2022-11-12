@@ -1,28 +1,28 @@
-<div class="porfolio section " id="porfolio">
+<div class="portfolio section " id="portfolio">
     <div class="section__inner section__inner--wide">
-        <div class="porfolio__head">
-            <div class="section__name">porfolio</div>
+        <div class="portfolio__head">
+            <div class="section__name">portfolio</div>
             <h1 class="section__title">{{title1}}</h1>
             <div class="section__descrp" [innerHTML]="descrp1">
             </div>
         </div>
-        <div class="porfolio__body">
-            <div class="porfolio-grid" #grid>
-                <div class="porfolio-grid__cell porfolio-grid-cell" *ngFor="let folio of folios; let i = index"
-                    (touchend)="showGuide(i)" [class.porfolio-grid-cell--show]="folio?.show" #gridCell>
-                    <div class="porfolio-grid-cell__guide">
-                        <div class="porfolio-grid-cell__title">{{folio.title}}</div>
-                        <div class="porfolio-grid-cell__links">
-                            <a [attr.href]="folio.repoLink" class="porfolio-grid-cell__link" target="_blank">
+        <div class="portfolio__body">
+            <div class="portfolio-grid" #grid>
+                <div class="portfolio-grid__cell portfolio-grid-cell" *ngFor="let folio of folios; let i = index"
+                    (touchend)="showGuide(i)" [class.portfolio-grid-cell--show]="folio?.show" #gridCell>
+                    <div class="portfolio-grid-cell__guide">
+                        <div class="portfolio-grid-cell__title">{{folio.title}}</div>
+                        <div class="portfolio-grid-cell__links">
+                            <a [attr.href]="folio.repoLink" class="portfolio-grid-cell__link" target="_blank">
                                 <img src="assets/images/github.svg" alt="github">
                             </a>
-                            <a [attr.href]="folio.pageLink" class="porfolio-grid-cell__link" target="_blank">
+                            <a [attr.href]="folio.pageLink" class="portfolio-grid-cell__link" target="_blank">
                                 <img src="assets/images/web.svg" alt="webpage">
                             </a>
                         </div>
                     </div>
-                    <div class="porfolio-grid-cell__img">
-                        <img draggable="false" [attr.src]="folio.img" alt="porfolio image">
+                    <div class="portfolio-grid-cell__img">
+                        <img draggable="false" [attr.src]="folio.img" alt="portfolio image">
                     </div>
                 </div>
             </div>
@@ -30,90 +30,90 @@
 
     </div>
     <div class="section__inner section__inner--wide">
-        <div class="porfolio__head">
+        <div class="portfolio__head">
             <div class="section__descrp" [innerHTML]="descrp2">
             </div>
         </div>
-        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--pc" appIsMobile
+        <div class="portfolio__body portfolio__body--bot portfolio__body--expand portfolio__body--pc" appIsMobile
             #timelineContainer>
-            <div class="porfolio-timeline" #timeline appIsMobile>
-                <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
+            <div class="portfolio-timeline" #timeline appIsMobile>
+                <div class="portfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
                     #timelineItem>
                     <ng-container [ngTemplateOutlet]="i%2===0?even:odd" [ngTemplateOutletContext]="{data:timelineData}">
                     </ng-container>
                 </div>
                 <ng-template #even let-data="data">
                     <div
-                        class="porfolio-timeline__square porfolio-timeline__square--up porfolio-timeline__square--blank">
+                        class="portfolio-timeline__square portfolio-timeline__square--up portfolio-timeline__square--blank">
                     </div>
-                    <div class="porfolio-timeline__circle">
+                    <div class="portfolio-timeline__circle">
                         <p>{{data.time}}</p>
                     </div>
-                    <div class="porfolio-timeline__square porfolio-timeline__square--down">
+                    <div class="portfolio-timeline__square portfolio-timeline__square--down">
                         <img draggable="false" [attr.src]="data.img" alt="logo" draggable="false">
                         <h3>{{data.title}}</h3>
-                        <a class="porfolio-timeline__link" [attr.href]="data.url" target="_blank">
+                        <a class="portfolio-timeline__link" [attr.href]="data.url" target="_blank">
                             <img draggable="false" src="assets/images/link.svg" alt="link">
                         </a>
                     </div>
                 </ng-template>
                 <ng-template #odd let-data="data">
-                    <div class="porfolio-timeline__square porfolio-timeline__square--up">
+                    <div class="portfolio-timeline__square portfolio-timeline__square--up">
                         <img draggable="false" [attr.src]="data.img" alt="logo">
                         <h3>{{data.title}}</h3>
-                        <a class="porfolio-timeline__link" [attr.href]="data.url" target="_blank">
+                        <a class="portfolio-timeline__link" [attr.href]="data.url" target="_blank">
                             <img draggable="false" src="assets/images/link.svg" alt="link">
                         </a>
                     </div>
-                    <div class="porfolio-timeline__circle">
+                    <div class="portfolio-timeline__circle">
                         <p>{{data.time}}</p>
                     </div>
                     <div
-                        class="porfolio-timeline__square porfolio-timeline__square--down porfolio-timeline__square--blank">
+                        class="portfolio-timeline__square portfolio-timeline__square--down portfolio-timeline__square--blank">
                     </div>
                 </ng-template>
-                <div class="porfolio-timeline__end"></div>
+                <div class="portfolio-timeline__end"></div>
             </div>
         </div>
-        <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--mobile" appIsMobile
+        <div class="portfolio__body portfolio__body--bot portfolio__body--expand portfolio__body--mobile" appIsMobile
             #mobileTimelineContainer>
-            <div class="porfolio-timeline" #timeline>
-                <div class="porfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
+            <div class="portfolio-timeline" #timeline>
+                <div class="portfolio-timeline__item" *ngFor="let timelineData of timelineDatas;let i = index "
                     #timelineItem>
                     <ng-container [ngTemplateOutlet]="i%2===0?even:odd" [ngTemplateOutletContext]="{data:timelineData}">
                     </ng-container>
                 </div>
                 <ng-template #even let-data="data">
                     <div
-                        class="porfolio-timeline__square porfolio-timeline__square--up porfolio-timeline__square--blank">
+                        class="portfolio-timeline__square portfolio-timeline__square--up portfolio-timeline__square--blank">
                     </div>
-                    <div class="porfolio-timeline__circle">
+                    <div class="portfolio-timeline__circle">
                         <p>{{data.time}}</p>
                     </div>
-                    <div class="porfolio-timeline__square porfolio-timeline__square--down">
+                    <div class="portfolio-timeline__square portfolio-timeline__square--down">
                         <img draggable="false" [attr.src]="data.img" alt="logo" draggable="false">
                         <h3>{{data.title}}</h3>
-                        <a class="porfolio-timeline__link" [attr.href]="data.url" target="_blank">
+                        <a class="portfolio-timeline__link" [attr.href]="data.url" target="_blank">
                             <img draggable="false" src="assets/images/link.svg" alt="link">
                         </a>
                     </div>
                 </ng-template>
                 <ng-template #odd let-data="data">
-                    <div class="porfolio-timeline__square porfolio-timeline__square--up">
+                    <div class="portfolio-timeline__square portfolio-timeline__square--up">
                         <img draggable="false" [attr.src]="data.img" alt="logo">
                         <h3>{{data.title}}</h3>
-                        <a class="porfolio-timeline__link" [attr.href]="data.url" target="_blank">
+                        <a class="portfolio-timeline__link" [attr.href]="data.url" target="_blank">
                             <img draggable="false" src="assets/images/link.svg" alt="link">
                         </a>
                     </div>
-                    <div class="porfolio-timeline__circle">
+                    <div class="portfolio-timeline__circle">
                         <p>{{data.time}}</p>
                     </div>
                     <div
-                        class="porfolio-timeline__square porfolio-timeline__square--down porfolio-timeline__square--blank">
+                        class="portfolio-timeline__square portfolio-timeline__square--down portfolio-timeline__square--blank">
                     </div>
                 </ng-template>
-                <div class="porfolio-timeline__end"></div>
+                <div class="portfolio-timeline__end"></div>
             </div>
         </div>
     </div>

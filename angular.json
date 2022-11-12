@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "porfolio2022": {
+    "portfolio2022": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
             "customWebpackConfig": {
               "path": "./custom-webpack.config.js"
             },
-            "outputPath": "dist/porfolio2022",
+            "outputPath": "dist/portfolio2022",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -79,10 +79,10 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "porfolio2022:build:production"
+              "browserTarget": "portfolio2022:build:production"
             },
             "development": {
-              "browserTarget": "porfolio2022:build:development"
+              "browserTarget": "portfolio2022:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "porfolio2022:build"
+            "browserTarget": "portfolio2022:build"
           }
         },
         "test": {

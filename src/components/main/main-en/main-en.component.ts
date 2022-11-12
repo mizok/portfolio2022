@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PorfolioComponent } from '../porfolio/porfolio.component';
+import { PortfolioComponent } from '../portfolio/portfolio.component';
 
 @Component({
   selector: 'app-main-en',
@@ -7,11 +7,11 @@ import { PorfolioComponent } from '../porfolio/porfolio.component';
   styleUrls: ['./main-en.component.scss']
 })
 export class MainEnComponent implements OnInit {
-  @ViewChild(PorfolioComponent, { static: true }) porfolioRef!: PorfolioComponent;
+  @ViewChild(PortfolioComponent, { static: true }) portfolioRef!: PortfolioComponent;
   menuItems = [
     'about',
     'personality',
-    'porfolio',
+    'portfolio',
     'resume',
     'contribute',
     'contact'
@@ -25,7 +25,7 @@ export class MainEnComponent implements OnInit {
 
 
   layoutScroll() {
-    this.porfolioRef.setTimelineScrollProgress();
+    this.portfolioRef.setTimelineScrollProgress();
   }
 
 }

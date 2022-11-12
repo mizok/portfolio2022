@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PorfolioComponent } from '../porfolio/porfolio.component';
+import { PortfolioComponent } from '../portfolio/portfolio.component';
 
 @Component({
   selector: 'app-main-tw',
@@ -7,11 +7,11 @@ import { PorfolioComponent } from '../porfolio/porfolio.component';
   styleUrls: ['./main-tw.component.scss']
 })
 export class MainTwComponent implements OnInit {
-  @ViewChild(PorfolioComponent, { static: true }) porfolioRef!: PorfolioComponent;
+  @ViewChild(PortfolioComponent, { static: true }) portfolioRef!: PortfolioComponent;
   menuItems = [
     'about',
     'personality',
-    'porfolio',
+    'portfolio',
     'resume',
     'contribute',
     'contact'
@@ -43,13 +43,13 @@ export class MainTwComponent implements OnInit {
     }
   ];
 
-  porfolioTitle1 = '這裡有一些我的日常作品';
-  porfolioDescrp1 = `身為一個具備美術教育背景的前端工程師，我特別愛好研究網頁3D體驗/生成式藝術的相關領域。<br>我使用的技術相當的多樣化，包含Three.js/P5.js/Webgl/blender/after
+  portfolioTitle1 = '這裡有一些我的日常作品';
+  portfolioDescrp1 = `身為一個具備美術教育背景的前端工程師，我特別愛好研究網頁3D體驗/生成式藝術的相關領域。<br>我使用的技術相當的多樣化，包含Three.js/P5.js/Webgl/blender/after
   effects,...等，我都曾有使用它們來進行創作的案例。<br>以目前來講，我把這個領域的相關研究看作是一種興趣，同時也還沒有計畫把這些技術投入工作使用。`
 
-  porfolioDescrp2 = `這裡則是一些我在現公司曾經參與過的專案，但我沒有權力可以公開這部分專案的源碼，您可以針對您感興趣的部分稍作檢視`
+  portfolioDescrp2 = `這裡則是一些我在現公司曾經參與過的專案，但我沒有權力可以公開這部分專案的源碼，您可以針對您感興趣的部分稍作檢視`
 
-  porfolioFolios: { title: string, img: string, repoLink: string, pageLink: string, show?: boolean }[] = [
+  portfolioFolios: { title: string, img: string, repoLink: string, pageLink: string, show?: boolean }[] = [
     {
       title: '3D-Cube-Chat',
       img: 'assets/images/folio-1.png',
@@ -76,7 +76,7 @@ export class MainTwComponent implements OnInit {
     },
 
   ];
-  porfolioTimelineDatas: { title: string, url: string, img: string, time: string }[] = [
+  portfolioTimelineDatas: { title: string, url: string, img: string, time: string }[] = [
     {
       title: '新光銀行官網維護',
       url: 'https://www.skbank.com.tw/',
@@ -268,7 +268,7 @@ export class MainTwComponent implements OnInit {
 
 
   layoutScroll() {
-    this.porfolioRef.setTimelineScrollProgress();
+    this.portfolioRef.setTimelineScrollProgress();
   }
 
 }

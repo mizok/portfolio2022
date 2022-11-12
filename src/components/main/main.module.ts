@@ -5,7 +5,7 @@ import { LayoutModule } from '../layout';
 import { BannerComponent } from './banner/banner.component';
 import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
-import { PorfolioComponent } from './porfolio/porfolio.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PersonalityComponent } from './personality/personality.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContributeComponent } from './contribute/contribute.component';
@@ -20,7 +20,7 @@ import { ServiceModule } from '@services';
     BannerComponent,
     AboutComponent,
     ResumeComponent,
-    PorfolioComponent,
+    PortfolioComponent,
     PersonalityComponent,
     ContactComponent,
     ContributeComponent
