@@ -1,4 +1,8 @@
 <div class="layout" [class.layout--active]="active" appIsMobile>
+    <div class="layout__loading" [class.layout__loading--hide]="loaded">
+        <div class="layout__loading-bar" #loadingBar></div>
+        <img src="assets/images/loading.svg" alt="">
+    </div>
     <div class="layout__inner" #inner>
         <app-side-menu class="layout__side" [items]="menuItems" (navigate)="scrollTo($event)" #side></app-side-menu>
         <div class="layout__content">

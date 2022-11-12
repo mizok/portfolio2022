@@ -53,17 +53,27 @@ export class LayoutComponent implements AfterViewInit {
   active = false;
   @Input() lang: 'CHINESE' | 'ENGLISH' = 'CHINESE';
   @Output('scroll') scroll = new EventEmitter();
+  @ViewChild('loadingBar') private loadingBar!: ElementRef;
   @ViewChild('scrollBox') private scrollBox!: ElementRef;
   @ViewChild('inner') private inner!: ElementRef;
   @ViewChild('side') private side!: SideMenuComponent;
   scrollbar !: Scrollbar;
   private sideSize: number = 0;
-
+  loaded = false;
   @Input() menuItems: string[] = [];
   constructor() { }
   ngAfterViewInit(): void {
     this.initScroll();
     this.getSideSize();
+    this.initLoading();
+  }
+
+  initLoading() {
+    gsap.to(this.loadingBar.nativeElement, {
+      width: '100%', duration: 1, onComplete: () => {
+        this.loaded = true;
+      }
+    })
   }
 
   getSideSize() {
