@@ -60,6 +60,10 @@ $sideWidth: 300px;
         overflow: hidden;
 
         &::ng-deep {
+            >.scrollbar-track-x {
+                display: none !important;
+            }
+
             >canvas {
                 pointer-events: none;
                 display: none !important;

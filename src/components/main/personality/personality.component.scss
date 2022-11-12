@@ -60,11 +60,14 @@
     }
 
     &__content {
-        font-size: 1rem;
+        font-size: 0.9rem;
         line-height: 1.5;
 
-        p {
-            font-size: 3rem;
+        &::ng-deep {
+            p {
+                font-size: 3rem;
+            }
         }
+
     }
 }

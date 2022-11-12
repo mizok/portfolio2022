@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, HostListener } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, HostListener, Input } from '@angular/core';
 import * as Masonry from 'masonry-layout';
 import * as imagesloaded from 'imagesloaded';
 import { gsap } from 'gsap';
@@ -19,7 +19,18 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
   @ViewChild('mobileTimelineContainer') mobileTimelineContainer!: ElementRef;
   @ViewChildren('timelineItem') timelineItems!: QueryList<ElementRef>;
   timelineContainerScrollbar?: Scrollbar;
-  folios: { title: string, img: string, repoLink: string, pageLink: string, show?: boolean }[] = [
+
+  @Input() title1 = 'Here are Some of My Works.';
+  @Input() descrp1 = `As a FE with art related education, I love to create Web 3D Experiance/ Generative Art releated
+  works.<br>
+  The techniques I use are quite diverse, including Three.js/P5.js/Webgl/blender/after
+  effects,...etc.<br>
+  At present, I treat the technology in this field as a hobby, whcih means I have no plan to use these
+  techniques in jobs.`
+  @Input() descrp2 = `Here are also some projects which I participated during recent jobs.<br>But I have no
+  right to show you the source code, just take a look if you are interested.`
+
+  @Input() folios: { title: string, img: string, repoLink: string, pageLink: string, show?: boolean }[] = [
     {
       title: '3D-Cube-Chat',
       img: 'assets/images/folio-1.png',
@@ -46,45 +57,45 @@ export class PorfolioComponent implements OnInit, AfterViewInit {
     },
 
   ];
-  timelineDatas: { title: string, url: string, img: string, time: string }[] = [
+  @Input() timelineDatas: { title: string, url: string, img: string, time: string }[] = [
     {
-      title: '新光銀行官網維護',
+      title: 'Official Site Maintenance',
       url: 'https://www.skbank.com.tw/',
       time: '2018',
       img: 'assets/images/logo-skBank.png'
     },
     {
-      title: '台新銀行官網重建',
+      title: 'Official Site Rebuild',
       url: 'https://www.taishinbank.com.tw/',
       time: '2018',
       img: 'assets/images/logo-tsBank.png'
     },
     {
-      title: '新光醫院官網建置',
+      title: 'Official Site Rebuild',
       url: 'https://www.skh.org.tw/skh/index.html',
       time: '2019',
       img: 'assets/images/logo-skHospital.png'
     },
     {
-      title: '誠品全球官網前台建置',
+      title: 'UIUX Project Frontend',
       url: 'https://www.eslitecorp.com/eslite/index.jsp',
       time: '2019',
       img: 'assets/images/logo-eslite.png'
     },
     {
-      title: '新逸資訊公司官網重建',
+      title: 'Official Site Rebuild',
       url: 'https://www.neux.com.tw/',
       time: '2020',
       img: 'assets/images/logo-neux.svg'
     },
     {
-      title: '新光金控官網重建',
+      title: 'Official Site Rebuild',
       url: 'https://www.skfh.com.tw/',
       time: '2021',
       img: 'assets/images/logo-skFinancial.png'
     },
     {
-      title: '元富證券官網重建',
+      title: 'Official Site Rebuild',
       url: 'https://www.masterlink.com.tw/',
       time: '2021',
       img: 'assets/images/logo-masterlink.svg'

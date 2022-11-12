@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from '../components/main'
+import { MainTwComponent, MainEnComponent } from '../components/main'
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
+  { path: 'zh-tw', component: MainTwComponent },
+  { path: 'en', component: MainEnComponent },
+  { path: '', component: MainEnComponent },
 ];
 
 

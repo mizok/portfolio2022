@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PorfolioComponent } from './porfolio/porfolio.component';
+import { PorfolioComponent } from '../porfolio/porfolio.component';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-main-en',
+  templateUrl: './main-en.component.html',
+  styleUrls: ['./main-en.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainEnComponent implements OnInit {
   @ViewChild(PorfolioComponent, { static: true }) porfolioRef!: PorfolioComponent;
   menuItems = [
     'about',

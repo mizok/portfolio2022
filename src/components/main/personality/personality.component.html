@@ -2,51 +2,16 @@
     <div class="section__inner section__inner--wide">
         <div class="personality__head">
             <div class="section__name">personality</div>
-            <h1 class="section__title">What Kind of Person am I?</h1>
+            <h1 class="section__title">{{title}}</h1>
         </div>
         <div class="personality__body">
             <div class="personality-group">
-                <div class="personality-group__item personality-card">
+                <div class="personality-group__item personality-card" *ngFor="let personality of personalities">
                     <div class="personality-card__img">
-                        <img draggable="false" src="assets/images/intj.png">
+                        <img draggable="false" [attr.src]="personality.img">
                     </div>
-                    <h2 class="personality-card__title">INTJ</h2>
-                    <div class="personality-card__content">
-                        The result of my 16 personalities test is INTJ(專家型). INTJs apply (often ruthlessly) the
-                        criterion "Does it work?" to everything from their own research efforts to the prevailing
-                        social norms.
-                    </div>
-                </div>
-                <div class="personality-group__item personality-card">
-                    <div class="personality-card__img">
-                        <img draggable="false" src="assets/images/introvert.png">
-                    </div>
-                    <h2 class="personality-card__title">INTROVERT</h2>
-                    <div class="personality-card__content">
-                        Yup, actually i am kinda shy guy, but I've never regard my
-                        shyness as a flaw. As an
-                        introvert person, I am much more sensitive to emotional things, and I always prefer to make
-                        a plan comprehensively before any action.
-                    </div>
-                </div>
-                <div class="personality-group__item personality-card">
-                    <div class="personality-card__img">
-                        <img draggable="false" src="assets/images/sincere.png">
-                    </div>
-                    <h2 class="personality-card__title">SINCERE</h2>
-                    <div class="personality-card__content">
-                        I won't say that I have never cheated, but I do hate to
-                        cheat. I am always proud of my
-                        honesty, I tend to treat people with a manner of honest and true heart.
-                    </div>
-                </div>
-                <div class="personality-group__item personality-card">
-                    <div class="personality-card__img">
-                        <img draggable="false" src="assets/images/creative.png">
-                    </div>
-                    <h2 class="personality-card__title">CREATIVE</h2>
-                    <div class="personality-card__content">
-                        <p>;-)</p>
+                    <h2 class="personality-card__title">{{personality.title}}</h2>
+                    <div class="personality-card__content" [innerHTML]="personality.content">
                     </div>
                 </div>
             </div>

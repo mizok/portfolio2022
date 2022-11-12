@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { MainComponent } from './main.component';
+import { MainTwComponent } from './main-tw/main-tw.component';
+import { MainEnComponent } from './main-en/main-en.component';
 import { LayoutModule } from '../layout';
 import { BannerComponent } from './banner/banner.component';
 import { AboutComponent } from './about/about.component';
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceModule } from '@services';
 @NgModule({
   declarations: [
-    MainComponent,
+    MainTwComponent,
+    MainEnComponent,
     BannerComponent,
     AboutComponent,
     ResumeComponent,
@@ -29,10 +31,12 @@ import { ServiceModule } from '@services';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+
   ],
   exports: [
-    MainComponent
+    MainTwComponent,
+    MainEnComponent
   ]
 })
 export class MainModule { }

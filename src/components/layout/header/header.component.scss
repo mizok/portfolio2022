@@ -1,0 +1,43 @@
+@import 'util';
+
+.header {
+    &__lang {
+        font-size: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        background-color: $black;
+        padding: 5px;
+        border-radius: 99px;
+        position: fixed;
+        top: 5px;
+        right: 20px;
+        z-index: 3;
+        color: $white;
+        cursor: pointer;
+
+        @include on-event(true) {
+            text-decoration: none;
+        }
+
+        @include rwd($screen-pad-portrait) {
+            right: 10px;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            flex: none;
+            width: 20px;
+            height: 20px;
+            background-image: url(/assets/images/web.svg);
+            background-size: cover;
+            margin-right: 5px;
+
+            @include rwd($screen-pad-portrait) {
+                width: 15px;
+                height: 15px;
+                margin-right: 3px;
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<app-layout (scroll)="layoutScroll()" [menuItems]="menuItems" [lang]="'ENGLISH'">
+    <app-banner></app-banner>
+    <app-about [title]="aboutTitle" [headTitle]="aboutHeadTitle" [headContent]="aboutHeadContent"
+        [contactDataGroup]="aboutContactDataGroup"></app-about>
+    <app-porfolio [title1]="porfolioTitle1" [descrp1]="porfolioDescrp1" [descrp2]="porfolioDescrp2"
+        [folios]="porfolioFolios" [timelineDatas]="porfolioTimelineDatas"></app-porfolio>
+    <app-personality [title]="personalityTitle" [personalities]="personalityPersonalities"></app-personality>
+    <app-resume [title]="resumeTitle" [trees]="resumeTrees"></app-resume>
+    <app-contribute [title]="contributeTitle" [contributes]="contributeContributes"></app-contribute>
+    <app-contact [title]="contactTitle" [formGuide]="contactFormGuide" [formSubmitError]="contactFormSubmitError"
+        [formSubmitMessage]="contactFormSubmitMessage"></app-contact>
+</app-layout>

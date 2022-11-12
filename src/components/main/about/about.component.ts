@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  contactDataGroup: { title: string, content?: string, url?: string }[] = [
+  @Input() title = "I'm Glad to Introduce Myself."
+  @Input() headTitle = 'Introduction';
+  @Input() headContent = `I’m just human, I have weakness, I make mistakes and I experience sadness; But I learn from
+  all these things to make me a better person.`;
+  @Input() contactDataGroup: { title: string, content?: string, url?: string }[] = [
     {
       title: 'FULLNAME',
       content: '黃廣誠 KUANG-CHENG HUANG'
@@ -17,7 +20,7 @@ export class AboutComponent implements OnInit {
     },
     {
       title: 'JOB',
-      content: '前端工程師'
+      content: 'frontend developer'
     },
     {
       title: 'EMAIL',
@@ -28,7 +31,7 @@ export class AboutComponent implements OnInit {
       url: 'https://github.com/mizok'
     }
   ];
-  skillDataGroup: { title: string, percent: number }[] = [
+  @Input() skillDataGroup: { title: string, percent: number }[] = [
     {
       title: 'Javascript',
       percent: 80

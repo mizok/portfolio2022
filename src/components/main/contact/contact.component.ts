@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,6 +16,27 @@ import { MessagePopupComponent } from '@components/popup';
 })
 export class ContactComponent implements OnInit {
   @ViewChild('alert') alertTemplateRef!: TemplateRef<any>;
+  @Input() title = `I'd Love To Hear From You.`;
+  @Input() formGuide = {
+    name: {
+      title: 'Your Name*',
+      error: 'Please Input Your Name'
+    },
+    email: {
+      title: 'Email*',
+      error1: 'Please Input Your Email',
+      error2: 'Invaid format of email'
+    },
+    subject: {
+      title: 'Subject*',
+      error: 'Please Input Your Subject'
+    },
+    message: {
+      title: 'Please Input Your Message'
+    }
+  }
+  @Input() formSubmitError = `There are missing or invalid parts in the form you submitted.<br>Please fix them before resend.`;
+  @Input() formSubmitMessage = `Thank you for your reply, you will receive a confirmation reply in your mailbox within 5 minutes.`;
   targetForm!: FormGroup;
   fc = new FormControl();
 
@@ -55,7 +76,7 @@ export class ContactComponent implements OnInit {
     const form = (e.target as HTMLFormElement);
     if (this.targetForm.invalid) {
       const messagePopupData = {
-        message: '您送出的表單中有缺漏或無效的部分，<br>煩請確認補填後重新發送。'
+        message: this.formSubmitError
       }
       this.popupService.open(MessagePopupComponent, this.viewContainerRef, { data: messagePopupData });
       return;
@@ -63,7 +84,7 @@ export class ContactComponent implements OnInit {
     this.contactService.doPost(form).subscribe({
       complete: () => {
         const messagePopupData = {
-          message: '感謝您的回覆，<br>您將在五分鐘內於您的信箱中收到確認回覆通知。'
+          message: this.formSubmitMessage
         }
         this.popupService.open(MessagePopupComponent, this.viewContainerRef, { data: messagePopupData })
         form.reset();

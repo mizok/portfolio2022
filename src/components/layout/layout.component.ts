@@ -51,6 +51,7 @@ Scrollbar.use(DisableScrollPlugin);
 })
 export class LayoutComponent implements AfterViewInit {
   active = false;
+  @Input() lang: 'CHINESE' | 'ENGLISH' = 'CHINESE';
   @Output('scroll') scroll = new EventEmitter();
   @ViewChild('scrollBox') private scrollBox!: ElementRef;
   @ViewChild('inner') private inner!: ElementRef;

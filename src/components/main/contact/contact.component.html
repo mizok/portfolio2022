@@ -2,7 +2,7 @@
     <div class="section__inner">
         <div class="contact__head">
             <div class="section__name">contact</div>
-            <h1 class="section__title">I'd Love To Hear From You.</h1>
+            <h1 class="section__title">{{title}}</h1>
         </div>
         <div class="contact__body">
             <form id="form" [formGroup]="targetForm" (submit)="submit($event)"
@@ -11,45 +11,45 @@
                     <div class="contact-form__input-block input-block">
                         <input type="text" class="input-block__form-control" name="name" formControlName="name"
                             [class.input-block__form-control--hasValue]="!!form['name'].value">
-                        <label for="">您的姓名*</label>
+                        <label for="">{{formGuide.name.title}}</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
                               !form['name'].pristine&&
                               form['name'].hasError('required')
-                            ">請填寫姓名</small>
+                            ">{{formGuide.name.error}}</small>
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
                         <input type="text" class="input-block__form-control" name="email" formControlName="email"
                             [class.input-block__form-control--hasValue]="!!form['email'].value">
-                        <label for="">Email*</label>
+                        <label for="">{{formGuide.email.title}}</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
                     !form['email'].pristine&&
                     form['email'].hasError('required')
-                            ">請填寫Email</small>
+                            ">{{formGuide.email.error1}}</small>
                     <small class="contact-form__error" *ngIf="
                     !form['email'].pristine&&
                     form['email'].hasError('email')
-                            ">Email格式錯誤</small>
+                            ">{{formGuide.email.error2}}</small>
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block">
                         <input type="text" class="input-block__form-control" name="subject" formControlName="subject"
                             [class.input-block__form-control--hasValue]="!!form['subject'].value">
-                        <label for="">主旨*</label>
+                        <label for="">{{formGuide.subject.title}}</label>
                     </div>
                     <small class="contact-form__error" *ngIf="
                     !form['subject'].pristine&&
                     form['subject'].hasError('required')
-                            ">請填寫主旨</small>
+                            ">{{formGuide.subject.error}}</small>
                 </div>
                 <div class="contact-form__row">
                     <div class="contact-form__input-block input-block input-block--textarea">
                         <textarea rows="3" type="text" class="input-block__form-control" name="message"
                             [class.input-block__form-control--hasValue]="!!form['message'].value"
                             formControlName="message"></textarea>
-                        <label for="">請輸入您的訊息</label>
+                        <label for="">{{formGuide.message.title}}</label>
                     </div>
                 </div>
                 <button class="contact-form__button square-button">SEND</button>

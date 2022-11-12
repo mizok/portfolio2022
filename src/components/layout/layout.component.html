@@ -4,6 +4,7 @@
         <div class="layout__content">
 
             <div class="layout__main" #scrollBox>
+                <app-header [lang]="lang"></app-header>
                 <ng-content #main></ng-content>
                 <app-footer></app-footer>
             </div>

@@ -2,14 +2,8 @@
     <div class="section__inner section__inner--wide">
         <div class="porfolio__head">
             <div class="section__name">porfolio</div>
-            <h1 class="section__title">Here are Some of My Works.</h1>
-            <div class="section__descrp">
-                As a FE with art related education, I love to create Web 3D Experiance/ Generative Art releated
-                works.<br>
-                The techniques I use are quite diverse, including Three.js/P5.js/Webgl/blender/after
-                effects,...etc.<br>
-                At present, I treat the technology in this field as a hobby, whcih means I have no plan to use these
-                techniques in jobs.
+            <h1 class="section__title">{{title1}}</h1>
+            <div class="section__descrp" [innerHTML]="descrp1">
             </div>
         </div>
         <div class="porfolio__body">
@@ -37,9 +31,7 @@
     </div>
     <div class="section__inner section__inner--wide">
         <div class="porfolio__head">
-            <div class="section__descrp">
-                Here are also some projects which I participated during recent jobs.<br>But I have no
-                right to show you the source code, just take a look if you are interested.
+            <div class="section__descrp" [innerHTML]="descrp2">
             </div>
         </div>
         <div class="porfolio__body porfolio__body--bot porfolio__body--expand porfolio__body--pc" appIsMobile
