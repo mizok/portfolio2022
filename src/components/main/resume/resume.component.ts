@@ -19,13 +19,13 @@ export class ResumeComponent implements OnInit {
       img: 'assets/images/school.svg',
       units: [
         {
-          positionTitle: '大學',
+          positionTitle: 'University',
           positionDescrp: '2009~2013',
           unitTitle: 'Department of Civil Engineering, NCKU',
           unitDescrp: 'I studied in the Department of Civil Engineering in college. The education of the Department of Civil Engineering means the most to me is the knowledge and proficiency in mathematics/physical calculation. This part actually have a great impact on me in the future, especially the details of planning web animations part.'
         },
         {
-          positionTitle: '研究所',
+          positionTitle: 'Master of Fine Arts',
           positionDescrp: '2014~2017',
           unitTitle: 'Department of Applied Arts,Fu Jen Catholic University',
           unitDescrp: 'The reason why I chose to switch from the science group to the art department was because I had a yearning for art/design, and having art/design experience finally gave me the ability and interest orientation which ordinary front-end engineers do not have.'
