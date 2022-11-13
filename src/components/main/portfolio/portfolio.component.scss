@@ -157,6 +157,7 @@
     $strokeWidth: 3px;
     display: inline-flex;
     align-items: center;
+    will-change: transform;
 
     &.is-mobile {
         @include rwd($screen-bs-large) {
