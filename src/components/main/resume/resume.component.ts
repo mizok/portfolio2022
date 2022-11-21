@@ -20,7 +20,7 @@ export class ResumeComponent implements OnInit {
       units: [
         {
           positionTitle: 'University',
-          positionDescrp: '2009~2013',
+          positionDescrp: '2008~2013',
           unitTitle: 'Department of Civil Engineering, NCKU',
           unitDescrp: 'I studied in the Department of Civil Engineering in college. The education of the Department of Civil Engineering means the most to me is the knowledge and proficiency in mathematics/physical calculation. This part actually have a great impact on me in the future, especially the details of planning web animations part.'
         },

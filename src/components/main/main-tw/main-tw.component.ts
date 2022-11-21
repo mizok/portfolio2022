@@ -155,7 +155,7 @@ export class MainTwComponent implements OnInit {
       units: [
         {
           positionTitle: '大學',
-          positionDescrp: '2009~2013',
+          positionDescrp: '2008~2013',
           unitTitle: '成功大學 NCKU 土木工程學系',
           unitDescrp: '我在大學念的是土木系，土木系的教育對我最大的意義就是對數學/物理計算的知識與熟練度，這部份其實在日後對我產生很大的影響，尤其是規劃網頁動畫細節的部分。'
         },
