@@ -24,7 +24,7 @@ export class AboutComponent implements OnInit {
     },
     {
       title: 'EMAIL',
-      content: 'chern_h@outlook.com'
+      content: '-',
     },
     {
       title: 'GITHUB',
